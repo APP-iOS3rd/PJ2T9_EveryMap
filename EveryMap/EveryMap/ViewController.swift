@@ -6,14 +6,17 @@
 //
 
 import UIKit
+import TMapSDK
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, TMapTapiDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         view.backgroundColor = .blue
+        var mapView = TMapView(frame: self.view.frame)
+        self.view.addSubview(mapView)
     }
 
 

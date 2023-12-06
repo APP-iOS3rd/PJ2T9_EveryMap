@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		714B74182B20C5CF00326AEC /* APIKEY-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 714B74172B20C5CF00326AEC /* APIKEY-Info.plist */; };
+		714B741B2B20C75E00326AEC /* TMapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714B74192B20C74B00326AEC /* TMapSDK.framework */; };
+		714B741C2B20C75E00326AEC /* TMapSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 714B74192B20C74B00326AEC /* TMapSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71EB13D92B206DFB00728077 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EB13D82B206DFB00728077 /* AppDelegate.swift */; };
 		71EB13DB2B206DFB00728077 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EB13DA2B206DFB00728077 /* SceneDelegate.swift */; };
 		71EB13DD2B206DFB00728077 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EB13DC2B206DFB00728077 /* ViewController.swift */; };
@@ -15,8 +17,23 @@
 		71EB13E52B206DFC00728077 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71EB13E32B206DFC00728077 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		714B741D2B20C75E00326AEC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				714B741C2B20C75E00326AEC /* TMapSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		714B74172B20C5CF00326AEC /* APIKEY-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "APIKEY-Info.plist"; sourceTree = "<group>"; };
+		714B74192B20C74B00326AEC /* TMapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TMapSDK.framework; sourceTree = "<group>"; };
 		71EB13D52B206DFB00728077 /* EveryMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EveryMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71EB13D82B206DFB00728077 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71EB13DA2B206DFB00728077 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,12 +48,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				714B741B2B20C75E00326AEC /* TMapSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		714B741E2B20C81600326AEC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		714B741F2B20C82500326AEC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		714B74202B20C82C00326AEC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		714B74212B20C83100326AEC /* Others */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
 		71EB13CC2B206DFB00728077 = {
 			isa = PBXGroup;
 			children = (
@@ -56,10 +102,15 @@
 		71EB13D72B206DFB00728077 /* EveryMap */ = {
 			isa = PBXGroup;
 			children = (
+				714B74212B20C83100326AEC /* Others */,
+				714B74202B20C82C00326AEC /* Views */,
+				714B741F2B20C82500326AEC /* ViewControllers */,
+				714B741E2B20C81600326AEC /* Models */,
+				71EB13DC2B206DFB00728077 /* ViewController.swift */,
 				71EB13D82B206DFB00728077 /* AppDelegate.swift */,
 				71EB13DA2B206DFB00728077 /* SceneDelegate.swift */,
-				71EB13DC2B206DFB00728077 /* ViewController.swift */,
 				714B74172B20C5CF00326AEC /* APIKEY-Info.plist */,
+				714B74192B20C74B00326AEC /* TMapSDK.framework */,
 				71EB13E12B206DFC00728077 /* Assets.xcassets */,
 				71EB13E32B206DFC00728077 /* LaunchScreen.storyboard */,
 				71EB13E62B206DFC00728077 /* Info.plist */,
@@ -77,6 +128,7 @@
 				71EB13D12B206DFB00728077 /* Sources */,
 				71EB13D22B206DFB00728077 /* Frameworks */,
 				71EB13D32B206DFB00728077 /* Resources */,
+				714B741D2B20C75E00326AEC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -285,6 +337,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J3XZ67KDFK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EveryMap",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EveryMap/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -313,6 +369,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J3XZ67KDFK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/EveryMap",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EveryMap/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
