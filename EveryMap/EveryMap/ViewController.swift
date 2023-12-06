@@ -14,11 +14,21 @@ class ViewController: UIViewController, TMapTapiDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        view.backgroundColor = .blue
-        var mapView = TMapView(frame: self.view.frame)
+        let mapView = TMapView(frame: self.view.frame)
         self.view.addSubview(mapView)
+        mapView.setApiKey(Bundle.main.TmapApiKey!)
+        
     }
-
+    
+    // Apikey 인증 성공 시 호출된다.
+    func SKTMapApikeySucceed() {
+        print("APIKEY 인증 성공")
+    }
+    
+    // Apikey 인증 실패 시 호출된다.
+    func SKTMapApikeyFailed(error: NSError?) {
+        print("APIKEY 인증 실패....")
+    }
 
 }
 
