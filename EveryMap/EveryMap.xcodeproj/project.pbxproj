@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		714B74182B20C5CF00326AEC /* API_KEY-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 714B74172B20C5CF00326AEC /* API_KEY-Info.plist */; };
 		71EB13D92B206DFB00728077 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EB13D82B206DFB00728077 /* AppDelegate.swift */; };
 		71EB13DB2B206DFB00728077 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EB13DA2B206DFB00728077 /* SceneDelegate.swift */; };
 		71EB13DD2B206DFB00728077 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EB13DC2B206DFB00728077 /* ViewController.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		714B74172B20C5CF00326AEC /* API_KEY-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "API_KEY-Info.plist"; sourceTree = "<group>"; };
 		71EB13D52B206DFB00728077 /* EveryMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EveryMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71EB13D82B206DFB00728077 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71EB13DA2B206DFB00728077 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 				71EB13D82B206DFB00728077 /* AppDelegate.swift */,
 				71EB13DA2B206DFB00728077 /* SceneDelegate.swift */,
 				71EB13DC2B206DFB00728077 /* ViewController.swift */,
+				714B74172B20C5CF00326AEC /* API_KEY-Info.plist */,
 				71EB13E12B206DFC00728077 /* Assets.xcassets */,
 				71EB13E32B206DFC00728077 /* LaunchScreen.storyboard */,
 				71EB13E62B206DFC00728077 /* Info.plist */,
@@ -122,6 +125,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				714B74182B20C5CF00326AEC /* API_KEY-Info.plist in Resources */,
 				71EB13E52B206DFC00728077 /* LaunchScreen.storyboard in Resources */,
 				71EB13E22B206DFC00728077 /* Assets.xcassets in Resources */,
 			);
