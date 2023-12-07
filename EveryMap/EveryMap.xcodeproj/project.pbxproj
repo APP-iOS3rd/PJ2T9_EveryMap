@@ -11,9 +11,11 @@
 		1D4A53992B216D77008682DC /* TMapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4A53972B216D71008682DC /* TMapSDK.framework */; };
 		1D4A539A2B216D77008682DC /* TMapSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4A53972B216D71008682DC /* TMapSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		714B74232B20C89F00326AEC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B74222B20C89F00326AEC /* Extensions.swift */; };
+		71B3DDE62B21722C00F58CE4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDE52B21722C00F58CE4 /* HomeView.swift */; };
+		71B3DDE82B2172B900F58CE4 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDE72B2172B900F58CE4 /* SettingView.swift */; };
 		71EB13D92B206DFB00728077 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EB13D82B206DFB00728077 /* AppDelegate.swift */; };
 		71EB13DB2B206DFB00728077 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EB13DA2B206DFB00728077 /* SceneDelegate.swift */; };
-		71EB13DD2B206DFB00728077 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EB13DC2B206DFB00728077 /* ViewController.swift */; };
+		71EB13DD2B206DFB00728077 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EB13DC2B206DFB00728077 /* MainTabBarController.swift */; };
 		71EB13E22B206DFC00728077 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71EB13E12B206DFC00728077 /* Assets.xcassets */; };
 		71EB13E52B206DFC00728077 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71EB13E32B206DFC00728077 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -36,10 +38,12 @@
 		1D4A53952B216D64008682DC /* APIKEY-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "APIKEY-Info.plist"; sourceTree = "<group>"; };
 		1D4A53972B216D71008682DC /* TMapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TMapSDK.framework; sourceTree = "<group>"; };
 		714B74222B20C89F00326AEC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		71B3DDE52B21722C00F58CE4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		71B3DDE72B2172B900F58CE4 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		71EB13D52B206DFB00728077 /* EveryMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EveryMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71EB13D82B206DFB00728077 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71EB13DA2B206DFB00728077 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		71EB13DC2B206DFB00728077 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		71EB13DC2B206DFB00728077 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		71EB13E12B206DFC00728077 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71EB13E42B206DFC00728077 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71EB13E62B206DFC00728077 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -64,26 +68,39 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		714B741F2B20C82500326AEC /* ViewControllers */ = {
+		714B741F2B20C82500326AEC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				71EB13DC2B206DFB00728077 /* MainTabBarController.swift */,
 			);
-			path = ViewControllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		714B74202B20C82C00326AEC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				71B3DDE52B21722C00F58CE4 /* HomeView.swift */,
+				71B3DDE72B2172B900F58CE4 /* SettingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		714B74212B20C83100326AEC /* Others */ = {
+		714B74212B20C83100326AEC /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				714B74222B20C89F00326AEC /* Extensions.swift */,
 			);
-			path = Others;
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		71B3DDE42B216F3E00F58CE4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				71EB13D82B206DFB00728077 /* AppDelegate.swift */,
+				71EB13DA2B206DFB00728077 /* SceneDelegate.swift */,
+				71EB13E32B206DFC00728077 /* LaunchScreen.storyboard */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		71EB13CC2B206DFB00728077 = {
@@ -105,17 +122,14 @@
 		71EB13D72B206DFB00728077 /* EveryMap */ = {
 			isa = PBXGroup;
 			children = (
-				714B74212B20C83100326AEC /* Others */,
-				714B74202B20C82C00326AEC /* Views */,
-				714B741F2B20C82500326AEC /* ViewControllers */,
+				71B3DDE42B216F3E00F58CE4 /* Core */,
+				714B74212B20C83100326AEC /* Utils */,
 				714B741E2B20C81600326AEC /* Models */,
-				71EB13DC2B206DFB00728077 /* ViewController.swift */,
-				71EB13D82B206DFB00728077 /* AppDelegate.swift */,
-				71EB13DA2B206DFB00728077 /* SceneDelegate.swift */,
+				714B74202B20C82C00326AEC /* Views */,
+				714B741F2B20C82500326AEC /* Controllers */,
 				1D4A53952B216D64008682DC /* APIKEY-Info.plist */,
 				1D4A53972B216D71008682DC /* TMapSDK.framework */,
 				71EB13E12B206DFC00728077 /* Assets.xcassets */,
-				71EB13E32B206DFC00728077 /* LaunchScreen.storyboard */,
 				71EB13E62B206DFC00728077 /* Info.plist */,
 			);
 			path = EveryMap;
@@ -193,8 +207,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71EB13DD2B206DFB00728077 /* ViewController.swift in Sources */,
+				71B3DDE62B21722C00F58CE4 /* HomeView.swift in Sources */,
+				71EB13DD2B206DFB00728077 /* MainTabBarController.swift in Sources */,
 				71EB13D92B206DFB00728077 /* AppDelegate.swift in Sources */,
+				71B3DDE82B2172B900F58CE4 /* SettingView.swift in Sources */,
 				71EB13DB2B206DFB00728077 /* SceneDelegate.swift in Sources */,
 				714B74232B20C89F00326AEC /* Extensions.swift in Sources */,
 			);
