@@ -7,18 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D4A53962B216D64008682DC /* APIKEY-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D4A53952B216D64008682DC /* APIKEY-Info.plist */; };
 		1D4A53992B216D77008682DC /* TMapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4A53972B216D71008682DC /* TMapSDK.framework */; };
 		1D4A539A2B216D77008682DC /* TMapSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4A53972B216D71008682DC /* TMapSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		714B74232B20C89F00326AEC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B74222B20C89F00326AEC /* Extensions.swift */; };
 		71B3DDE62B21722C00F58CE4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDE52B21722C00F58CE4 /* HomeView.swift */; };
 		71B3DDE82B2172B900F58CE4 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDE72B2172B900F58CE4 /* SettingView.swift */; };
 		71B3DDEA2B217B9600F58CE4 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDE92B217B9600F58CE4 /* Enums.swift */; };
+		71B3DDEC2B217ED700F58CE4 /* APIKEY-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71B3DDEB2B217ED700F58CE4 /* APIKEY-Info.plist */; };
 		71EB13D92B206DFB00728077 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EB13D82B206DFB00728077 /* AppDelegate.swift */; };
 		71EB13DB2B206DFB00728077 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EB13DA2B206DFB00728077 /* SceneDelegate.swift */; };
 		71EB13DD2B206DFB00728077 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EB13DC2B206DFB00728077 /* MainTabBarController.swift */; };
 		71EB13E22B206DFC00728077 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71EB13E12B206DFC00728077 /* Assets.xcassets */; };
 		71EB13E52B206DFC00728077 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71EB13E32B206DFC00728077 /* LaunchScreen.storyboard */; };
+		E762AAB3EBE884ED30135EA3 /* Pods_EveryMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97529F93E49902EE90AE5BF4 /* Pods_EveryMap.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,12 +37,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1D4A53952B216D64008682DC /* APIKEY-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "APIKEY-Info.plist"; sourceTree = "<group>"; };
 		1D4A53972B216D71008682DC /* TMapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TMapSDK.framework; sourceTree = "<group>"; };
+		6A01C15D2F2500C3C89E118C /* Pods-EveryMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryMap.debug.xcconfig"; path = "Target Support Files/Pods-EveryMap/Pods-EveryMap.debug.xcconfig"; sourceTree = "<group>"; };
 		714B74222B20C89F00326AEC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		71B3DDE52B21722C00F58CE4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		71B3DDE72B2172B900F58CE4 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		71B3DDE92B217B9600F58CE4 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		71B3DDEB2B217ED700F58CE4 /* APIKEY-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "APIKEY-Info.plist"; sourceTree = "<group>"; };
 		71EB13D52B206DFB00728077 /* EveryMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EveryMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71EB13D82B206DFB00728077 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71EB13DA2B206DFB00728077 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 		71EB13E12B206DFC00728077 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71EB13E42B206DFC00728077 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71EB13E62B206DFC00728077 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97529F93E49902EE90AE5BF4 /* Pods_EveryMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EveryMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6F4DA08901549AB9922D135 /* Pods-EveryMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryMap.release.xcconfig"; path = "Target Support Files/Pods-EveryMap/Pods-EveryMap.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D4A53992B216D77008682DC /* TMapSDK.framework in Frameworks */,
+				E762AAB3EBE884ED30135EA3 /* Pods_EveryMap.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +116,8 @@
 			children = (
 				71EB13D72B206DFB00728077 /* EveryMap */,
 				71EB13D62B206DFB00728077 /* Products */,
+				9984F9415C0BE3149CBD93CA /* Pods */,
+				7E3FBA74022993D89A3061B9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,12 +137,30 @@
 				714B741E2B20C81600326AEC /* Models */,
 				714B74202B20C82C00326AEC /* Views */,
 				714B741F2B20C82500326AEC /* Controllers */,
-				1D4A53952B216D64008682DC /* APIKEY-Info.plist */,
 				1D4A53972B216D71008682DC /* TMapSDK.framework */,
+				71B3DDEB2B217ED700F58CE4 /* APIKEY-Info.plist */,
 				71EB13E12B206DFC00728077 /* Assets.xcassets */,
 				71EB13E62B206DFC00728077 /* Info.plist */,
 			);
 			path = EveryMap;
+			sourceTree = "<group>";
+		};
+		7E3FBA74022993D89A3061B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97529F93E49902EE90AE5BF4 /* Pods_EveryMap.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9984F9415C0BE3149CBD93CA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6A01C15D2F2500C3C89E118C /* Pods-EveryMap.debug.xcconfig */,
+				C6F4DA08901549AB9922D135 /* Pods-EveryMap.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,10 +170,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 71EB13E92B206DFC00728077 /* Build configuration list for PBXNativeTarget "EveryMap" */;
 			buildPhases = (
+				12E2A1C5A443F7B8567651BA /* [CP] Check Pods Manifest.lock */,
 				71EB13D12B206DFB00728077 /* Sources */,
 				71EB13D22B206DFB00728077 /* Frameworks */,
 				71EB13D32B206DFB00728077 /* Resources */,
 				714B741D2B20C75E00326AEC /* Embed Frameworks */,
+				526B19B9610215AF43E139AD /* [CP] Embed Pods Frameworks */,
+				8D68FC247D6F2FFCA465FBDE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -199,11 +227,70 @@
 			files = (
 				71EB13E52B206DFC00728077 /* LaunchScreen.storyboard in Resources */,
 				71EB13E22B206DFC00728077 /* Assets.xcassets in Resources */,
-				1D4A53962B216D64008682DC /* APIKEY-Info.plist in Resources */,
+				71B3DDEC2B217ED700F58CE4 /* APIKEY-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		12E2A1C5A443F7B8567651BA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EveryMap-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		526B19B9610215AF43E139AD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EveryMap/Pods-EveryMap-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EveryMap/Pods-EveryMap-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EveryMap/Pods-EveryMap-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D68FC247D6F2FFCA465FBDE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EveryMap/Pods-EveryMap-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EveryMap/Pods-EveryMap-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EveryMap/Pods-EveryMap-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		71EB13D12B206DFB00728077 /* Sources */ = {
@@ -355,6 +442,7 @@
 		};
 		71EB13EA2B206DFC00728077 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A01C15D2F2500C3C89E118C /* Pods-EveryMap.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -387,6 +475,7 @@
 		};
 		71EB13EB2B206DFC00728077 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6F4DA08901549AB9922D135 /* Pods-EveryMap.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
