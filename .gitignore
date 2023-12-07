@@ -97,3 +97,6 @@ iOSInjectionProject/
 
 # Framework 파일 포함 X
 **/TMapSDK.framework
+
+# Pods 폴더 포함 x
+Pods/
