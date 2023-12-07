@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		714B74182B20C5CF00326AEC /* APIKEY-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 714B74172B20C5CF00326AEC /* APIKEY-Info.plist */; };
-		714B741B2B20C75E00326AEC /* TMapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 714B74192B20C74B00326AEC /* TMapSDK.framework */; };
-		714B741C2B20C75E00326AEC /* TMapSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 714B74192B20C74B00326AEC /* TMapSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D4A53962B216D64008682DC /* APIKEY-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D4A53952B216D64008682DC /* APIKEY-Info.plist */; };
+		1D4A53992B216D77008682DC /* TMapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4A53972B216D71008682DC /* TMapSDK.framework */; };
+		1D4A539A2B216D77008682DC /* TMapSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4A53972B216D71008682DC /* TMapSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		714B74232B20C89F00326AEC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B74222B20C89F00326AEC /* Extensions.swift */; };
 		71EB13D92B206DFB00728077 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EB13D82B206DFB00728077 /* AppDelegate.swift */; };
 		71EB13DB2B206DFB00728077 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EB13DA2B206DFB00728077 /* SceneDelegate.swift */; };
@@ -25,7 +25,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				714B741C2B20C75E00326AEC /* TMapSDK.framework in Embed Frameworks */,
+				1D4A539A2B216D77008682DC /* TMapSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -33,8 +33,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		714B74172B20C5CF00326AEC /* APIKEY-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "APIKEY-Info.plist"; sourceTree = "<group>"; };
-		714B74192B20C74B00326AEC /* TMapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TMapSDK.framework; sourceTree = "<group>"; };
+		1D4A53952B216D64008682DC /* APIKEY-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "APIKEY-Info.plist"; sourceTree = "<group>"; };
+		1D4A53972B216D71008682DC /* TMapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TMapSDK.framework; sourceTree = "<group>"; };
 		714B74222B20C89F00326AEC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		71EB13D52B206DFB00728077 /* EveryMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EveryMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71EB13D82B206DFB00728077 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				714B741B2B20C75E00326AEC /* TMapSDK.framework in Frameworks */,
+				1D4A53992B216D77008682DC /* TMapSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,8 +112,8 @@
 				71EB13DC2B206DFB00728077 /* ViewController.swift */,
 				71EB13D82B206DFB00728077 /* AppDelegate.swift */,
 				71EB13DA2B206DFB00728077 /* SceneDelegate.swift */,
-				714B74172B20C5CF00326AEC /* APIKEY-Info.plist */,
-				714B74192B20C74B00326AEC /* TMapSDK.framework */,
+				1D4A53952B216D64008682DC /* APIKEY-Info.plist */,
+				1D4A53972B216D71008682DC /* TMapSDK.framework */,
 				71EB13E12B206DFC00728077 /* Assets.xcassets */,
 				71EB13E32B206DFC00728077 /* LaunchScreen.storyboard */,
 				71EB13E62B206DFC00728077 /* Info.plist */,
@@ -180,9 +180,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				714B74182B20C5CF00326AEC /* APIKEY-Info.plist in Resources */,
 				71EB13E52B206DFC00728077 /* LaunchScreen.storyboard in Resources */,
 				71EB13E22B206DFC00728077 /* Assets.xcassets in Resources */,
+				1D4A53962B216D64008682DC /* APIKEY-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
