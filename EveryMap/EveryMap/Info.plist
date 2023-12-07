@@ -19,5 +19,9 @@
 			</array>
 		</dict>
 	</dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>tmap</string>
+	</array>
 </dict>
 </plist>
