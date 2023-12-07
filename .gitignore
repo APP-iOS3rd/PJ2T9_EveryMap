@@ -94,3 +94,6 @@ iOSInjectionProject/
 
 # 프로젝트의 모든 경로에서 APIKEY-Info.plist 파일을 포함하지 않도록 함
 **/APIKEY-Info.plist
+
+# Framework 파일 포함 X
+**/TMapSDK.framework
