@@ -12,7 +12,7 @@ import Foundation
 import Foundation
 
 // MARK: - Post
-struct Post: Codable {
+struct TMapRoute: Codable {
     let type: String
     let features: [Feature]
 }

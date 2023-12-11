@@ -13,15 +13,11 @@ class SettingView: UIViewController {
         self.init()
         self.title = title
         self.view.backgroundColor = bgColor
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         // Do any additional setup after loading the view.
     }
-    
-    
 }

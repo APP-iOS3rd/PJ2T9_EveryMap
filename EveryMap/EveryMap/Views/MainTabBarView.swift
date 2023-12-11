@@ -35,4 +35,3 @@ class MainTabBarView: UITabBarController {
         secondNC.tabBarItem = secondTabBarItem
     }
 }
-
