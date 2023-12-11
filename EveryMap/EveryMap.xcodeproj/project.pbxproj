@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D4A53992B216D77008682DC /* TMapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4A53972B216D71008682DC /* TMapSDK.framework */; };
-		1D4A539A2B216D77008682DC /* TMapSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D4A53972B216D71008682DC /* TMapSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D7F7AF42B26CB1D008DEFE8 /* TMapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D7F7AF32B26CB1D008DEFE8 /* TMapSDK.framework */; };
+		1D7F7AF62B26CB39008DEFE8 /* APIKEY-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D7F7AF52B26CB39008DEFE8 /* APIKEY-Info.plist */; };
+		1D7F7AFF2B26CCBE008DEFE8 /* TMapRouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F7AFE2B26CCBE008DEFE8 /* TMapRouteModel.swift */; };
+		1D7F7B012B26E0D2008DEFE8 /* NaverMapRouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F7B002B26E0D2008DEFE8 /* NaverMapRouteModel.swift */; };
 		714B74232B20C89F00326AEC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B74222B20C89F00326AEC /* Extensions.swift */; };
 		71B3DDE62B21722C00F58CE4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDE52B21722C00F58CE4 /* HomeView.swift */; };
 		71B3DDE82B2172B900F58CE4 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDE72B2172B900F58CE4 /* SettingView.swift */; };
 		71B3DDEA2B217B9600F58CE4 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDE92B217B9600F58CE4 /* Enums.swift */; };
-		71B3DDEC2B217ED700F58CE4 /* APIKEY-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71B3DDEB2B217ED700F58CE4 /* APIKEY-Info.plist */; };
 		71B3DDEE2B219B0000F58CE4 /* HomeViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDED2B219B0000F58CE4 /* HomeViewViewController.swift */; };
 		71B3DDF02B219B0A00F58CE4 /* SettingViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDEF2B219B0A00F58CE4 /* SettingViewViewController.swift */; };
 		71B3DDF22B219B6200F58CE4 /* MainTabBarViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDF12B219B6200F58CE4 /* MainTabBarViewViewController.swift */; };
@@ -32,7 +33,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1D4A539A2B216D77008682DC /* TMapSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -40,13 +40,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1D4A53972B216D71008682DC /* TMapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TMapSDK.framework; sourceTree = "<group>"; };
+		1D7F7AF32B26CB1D008DEFE8 /* TMapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TMapSDK.framework; sourceTree = "<group>"; };
+		1D7F7AF52B26CB39008DEFE8 /* APIKEY-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "APIKEY-Info.plist"; sourceTree = "<group>"; };
+		1D7F7AFE2B26CCBE008DEFE8 /* TMapRouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMapRouteModel.swift; sourceTree = "<group>"; };
+		1D7F7B002B26E0D2008DEFE8 /* NaverMapRouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMapRouteModel.swift; sourceTree = "<group>"; };
 		6A01C15D2F2500C3C89E118C /* Pods-EveryMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryMap.debug.xcconfig"; path = "Target Support Files/Pods-EveryMap/Pods-EveryMap.debug.xcconfig"; sourceTree = "<group>"; };
 		714B74222B20C89F00326AEC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		71B3DDE52B21722C00F58CE4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		71B3DDE72B2172B900F58CE4 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		71B3DDE92B217B9600F58CE4 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		71B3DDEB2B217ED700F58CE4 /* APIKEY-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "APIKEY-Info.plist"; sourceTree = "<group>"; };
 		71B3DDED2B219B0000F58CE4 /* HomeViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewViewController.swift; sourceTree = "<group>"; };
 		71B3DDEF2B219B0A00F58CE4 /* SettingViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewViewController.swift; sourceTree = "<group>"; };
 		71B3DDF12B219B6200F58CE4 /* MainTabBarViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewViewController.swift; sourceTree = "<group>"; };
@@ -66,17 +68,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D4A53992B216D77008682DC /* TMapSDK.framework in Frameworks */,
 				E762AAB3EBE884ED30135EA3 /* Pods_EveryMap.framework in Frameworks */,
+				1D7F7AF42B26CB1D008DEFE8 /* TMapSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		714B741E2B20C81600326AEC /* Models */ = {
+		1D7F7AFD2B26CC9C008DEFE8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1D7F7AFE2B26CCBE008DEFE8 /* TMapRouteModel.swift */,
+				1D7F7B002B26E0D2008DEFE8 /* NaverMapRouteModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -143,13 +147,13 @@
 			children = (
 				71B3DDE42B216F3E00F58CE4 /* Core */,
 				714B74212B20C83100326AEC /* Utils */,
-				714B741E2B20C81600326AEC /* Models */,
+				1D7F7AFD2B26CC9C008DEFE8 /* Models */,
 				714B74202B20C82C00326AEC /* Views */,
 				714B741F2B20C82500326AEC /* Controllers */,
-				1D4A53972B216D71008682DC /* TMapSDK.framework */,
-				71B3DDEB2B217ED700F58CE4 /* APIKEY-Info.plist */,
 				71EB13E12B206DFC00728077 /* Assets.xcassets */,
 				71EB13E62B206DFC00728077 /* Info.plist */,
+				1D7F7AF32B26CB1D008DEFE8 /* TMapSDK.framework */,
+				1D7F7AF52B26CB39008DEFE8 /* APIKEY-Info.plist */,
 			);
 			path = EveryMap;
 			sourceTree = "<group>";
@@ -235,7 +239,7 @@
 			files = (
 				71EB13E52B206DFC00728077 /* LaunchScreen.storyboard in Resources */,
 				71EB13E22B206DFC00728077 /* Assets.xcassets in Resources */,
-				71B3DDEC2B217ED700F58CE4 /* APIKEY-Info.plist in Resources */,
+				1D7F7AF62B26CB39008DEFE8 /* APIKEY-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +314,8 @@
 				71B3DDEE2B219B0000F58CE4 /* HomeViewViewController.swift in Sources */,
 				71B3DDF02B219B0A00F58CE4 /* SettingViewViewController.swift in Sources */,
 				71EB13D92B206DFB00728077 /* AppDelegate.swift in Sources */,
+				1D7F7B012B26E0D2008DEFE8 /* NaverMapRouteModel.swift in Sources */,
+				1D7F7AFF2B26CCBE008DEFE8 /* TMapRouteModel.swift in Sources */,
 				71B3DDE82B2172B900F58CE4 /* SettingView.swift in Sources */,
 				71B3DDEA2B217B9600F58CE4 /* Enums.swift in Sources */,
 				71EB13DB2B206DFB00728077 /* SceneDelegate.swift in Sources */,
@@ -459,7 +465,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J3XZ67KDFK;
+				DEVELOPMENT_TEAM = 3D57ZF2MPX;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -477,7 +483,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Seonghyeon.EveryMap;
+				PRODUCT_BUNDLE_IDENTIFIER = Seonghyeon.EveryMap123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -493,7 +499,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J3XZ67KDFK;
+				DEVELOPMENT_TEAM = 3D57ZF2MPX;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -511,7 +517,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Seonghyeon.EveryMap;
+				PRODUCT_BUNDLE_IDENTIFIER = Seonghyeon.EveryMap123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
