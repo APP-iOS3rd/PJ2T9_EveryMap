@@ -30,8 +30,26 @@ class SettingView: UIViewController {
         return tableview
     }()
 
-    private let itemLabelText = ["앱 버전","고객 센터","도움말 및 지원"]
-    private let itemSubLabelText = ["최신 버전입니다.", "", ""]
+    enum SettingItem: Int, CaseIterable {
+        case appVersion
+        case customerService
+        case helpAndSupport
+
+        var labelText: String {
+            switch self {
+            case .appVersion: return "앱 버전"
+            case .customerService: return "고객 센터"
+            case .helpAndSupport: return "도움말 및 지원"
+            }
+        }
+
+        var subLabelText: String {
+            switch self {
+            case .appVersion: return "최신 버전입니다."
+            case .customerService, .helpAndSupport: return ""
+            }
+        }
+    }
 
 
     convenience init(title: String, bgColor: UIColor) {
@@ -83,11 +101,14 @@ extension SettingView: UITableViewDataSource {
         
         cell.backgroundColor = .white
         
-        cell.itemLabel.text = itemLabelText[indexPath.row]
-        cell.itemSubLabel.text = itemSubLabelText[indexPath.row]
+        let settingItem = SettingItem(rawValue: indexPath.row)!
+        
+        cell.itemLabel.text = settingItem.labelText
+        cell.itemSubLabel.text = settingItem.subLabelText
         
         return cell
     }
+
 }
 
 // MARK: - TableView Delegate
