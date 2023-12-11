@@ -46,3 +46,16 @@ extension UIView {
         }
     }
 }
+
+extension UINavigationController {
+    func setupBarAppearance() {
+           let appearance = UINavigationBarAppearance()
+           appearance.configureWithDefaultBackground()
+           appearance.backgroundColor = .gray
+
+           navigationBar.standardAppearance = appearance
+           navigationBar.compactAppearance = appearance
+           navigationBar.scrollEdgeAppearance = appearance
+           navigationBar.isTranslucent = false
+       }
+}
