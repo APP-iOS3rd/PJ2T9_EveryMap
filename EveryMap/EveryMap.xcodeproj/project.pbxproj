@@ -10,6 +10,7 @@
 		1D7F7AF42B26CB1D008DEFE8 /* TMapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D7F7AF32B26CB1D008DEFE8 /* TMapSDK.framework */; };
 		1D7F7AF62B26CB39008DEFE8 /* APIKEY-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D7F7AF52B26CB39008DEFE8 /* APIKEY-Info.plist */; };
 		1D7F7AFF2B26CCBE008DEFE8 /* TMapRouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F7AFE2B26CCBE008DEFE8 /* TMapRouteModel.swift */; };
+		1D7F7B012B26E0D2008DEFE8 /* NaverMapRouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F7B002B26E0D2008DEFE8 /* NaverMapRouteModel.swift */; };
 		714B74232B20C89F00326AEC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B74222B20C89F00326AEC /* Extensions.swift */; };
 		71B3DDE62B21722C00F58CE4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDE52B21722C00F58CE4 /* HomeView.swift */; };
 		71B3DDE82B2172B900F58CE4 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDE72B2172B900F58CE4 /* SettingView.swift */; };
@@ -42,6 +43,7 @@
 		1D7F7AF32B26CB1D008DEFE8 /* TMapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TMapSDK.framework; sourceTree = "<group>"; };
 		1D7F7AF52B26CB39008DEFE8 /* APIKEY-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "APIKEY-Info.plist"; sourceTree = "<group>"; };
 		1D7F7AFE2B26CCBE008DEFE8 /* TMapRouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMapRouteModel.swift; sourceTree = "<group>"; };
+		1D7F7B002B26E0D2008DEFE8 /* NaverMapRouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMapRouteModel.swift; sourceTree = "<group>"; };
 		6A01C15D2F2500C3C89E118C /* Pods-EveryMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryMap.debug.xcconfig"; path = "Target Support Files/Pods-EveryMap/Pods-EveryMap.debug.xcconfig"; sourceTree = "<group>"; };
 		714B74222B20C89F00326AEC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		71B3DDE52B21722C00F58CE4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				1D7F7AFE2B26CCBE008DEFE8 /* TMapRouteModel.swift */,
+				1D7F7B002B26E0D2008DEFE8 /* NaverMapRouteModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				71B3DDEE2B219B0000F58CE4 /* HomeViewViewController.swift in Sources */,
 				71B3DDF02B219B0A00F58CE4 /* SettingViewViewController.swift in Sources */,
 				71EB13D92B206DFB00728077 /* AppDelegate.swift in Sources */,
+				1D7F7B012B26E0D2008DEFE8 /* NaverMapRouteModel.swift in Sources */,
 				1D7F7AFF2B26CCBE008DEFE8 /* TMapRouteModel.swift in Sources */,
 				71B3DDE82B2172B900F58CE4 /* SettingView.swift in Sources */,
 				71B3DDEA2B217B9600F58CE4 /* Enums.swift in Sources */,
