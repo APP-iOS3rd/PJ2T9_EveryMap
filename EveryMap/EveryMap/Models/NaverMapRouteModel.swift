@@ -5,10 +5,12 @@
 //  Created by Taejun Ha on 12/11/23.
 //
 
+//NMap API 경로탐색 DataModel
+
 import Foundation
 
 // MARK: - Post
-struct Post: Codable {
+struct NMapRoute: Codable {
     let code: Int
     let message: String
     let currentDateTime: String
