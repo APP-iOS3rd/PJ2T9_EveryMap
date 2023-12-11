@@ -8,6 +8,13 @@
 import UIKit
 
 class ResultMapView: UIViewController {
+    
+    let search : UISearchBar = {
+       let text = UISearchBar()
+        text.translatesAutoresizingMaskIntoConstraints = false
+        
+        return text
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()

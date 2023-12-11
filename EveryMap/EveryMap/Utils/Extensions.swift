@@ -4,7 +4,7 @@
 //
 //  Created by 이성현 on 2023/12/07.
 //
-
+import UIKit
 import Foundation
 
 // APIKEY 를 가져오기 위한 Bundle extension
@@ -35,5 +35,14 @@ extension Bundle {
               let resource = NSDictionary(contentsOfFile: file),
               let key = resource["Navermap-clientsecret"] as? String else { return nil }
         return key
+    }
+}
+
+extension UIView {
+    func addSubviews(_ views: UIView...) {
+        views.forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            addSubview($0)
+        }
     }
 }
