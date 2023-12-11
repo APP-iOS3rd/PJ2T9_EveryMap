@@ -17,6 +17,10 @@
 		1D7F7B112B26E60A008DEFE8 /* ResultMapViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F7B102B26E60A008DEFE8 /* ResultMapViewViewController.swift */; };
 		1D7F7B132B26E6C4008DEFE8 /* CompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F7B122B26E6C4008DEFE8 /* CompareView.swift */; };
 		1D7F7B152B26E6D5008DEFE8 /* CompareViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F7B142B26E6D5008DEFE8 /* CompareViewViewController.swift */; };
+		1D7F7B162B26FC64008DEFE8 /* TMapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C2AE582B26EF6A005BA51B /* TMapSDK.framework */; };
+		1D7F7B172B26FC64008DEFE8 /* TMapSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71C2AE582B26EF6A005BA51B /* TMapSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1D7F7B1C2B272A8C008DEFE8 /* SettingViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F7B1B2B272A8B008DEFE8 /* SettingViewTableViewCell.swift */; };
+		1DC374872B2756AB00D9214C /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC374862B2756AB00D9214C /* PaddingLabel.swift */; };
 		714B74232B20C89F00326AEC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B74222B20C89F00326AEC /* Extensions.swift */; };
 		71B3DDE62B21722C00F58CE4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDE52B21722C00F58CE4 /* HomeView.swift */; };
 		71B3DDE82B2172B900F58CE4 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDE72B2172B900F58CE4 /* SettingView.swift */; };
@@ -24,7 +28,6 @@
 		71B3DDEE2B219B0000F58CE4 /* HomeViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDED2B219B0000F58CE4 /* HomeViewViewController.swift */; };
 		71B3DDF02B219B0A00F58CE4 /* SettingViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDEF2B219B0A00F58CE4 /* SettingViewViewController.swift */; };
 		71B3DDF22B219B6200F58CE4 /* MainTabBarViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDF12B219B6200F58CE4 /* MainTabBarViewViewController.swift */; };
-		71C2AE592B26EF6A005BA51B /* TMapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C2AE582B26EF6A005BA51B /* TMapSDK.framework */; };
 		71C2AE5B2B26EF79005BA51B /* APIKEY-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71C2AE5A2B26EF79005BA51B /* APIKEY-Info.plist */; };
 		71EB13D92B206DFB00728077 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EB13D82B206DFB00728077 /* AppDelegate.swift */; };
 		71EB13DB2B206DFB00728077 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EB13DA2B206DFB00728077 /* SceneDelegate.swift */; };
@@ -41,6 +44,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				1D7F7B172B26FC64008DEFE8 /* TMapSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,6 +62,8 @@
 		1D7F7B102B26E60A008DEFE8 /* ResultMapViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultMapViewViewController.swift; sourceTree = "<group>"; };
 		1D7F7B122B26E6C4008DEFE8 /* CompareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareView.swift; sourceTree = "<group>"; };
 		1D7F7B142B26E6D5008DEFE8 /* CompareViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareViewViewController.swift; sourceTree = "<group>"; };
+		1D7F7B1B2B272A8B008DEFE8 /* SettingViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewTableViewCell.swift; sourceTree = "<group>"; };
+		1DC374862B2756AB00D9214C /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		6A01C15D2F2500C3C89E118C /* Pods-EveryMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryMap.debug.xcconfig"; path = "Target Support Files/Pods-EveryMap/Pods-EveryMap.debug.xcconfig"; sourceTree = "<group>"; };
 		714B74222B20C89F00326AEC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		71B3DDE52B21722C00F58CE4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -85,7 +91,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E762AAB3EBE884ED30135EA3 /* Pods_EveryMap.framework in Frameworks */,
-				71C2AE592B26EF6A005BA51B /* TMapSDK.framework in Frameworks */,
+				1D7F7B162B26FC64008DEFE8 /* TMapSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +105,23 @@
 				1D7F7B002B26E0D2008DEFE8 /* NMapRouteModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		1D7F7B182B2702BD008DEFE8 /* SettingView */ = {
+			isa = PBXGroup;
+			children = (
+				71B3DDE72B2172B900F58CE4 /* SettingView.swift */,
+				1D7F7B1B2B272A8B008DEFE8 /* SettingViewTableViewCell.swift */,
+			);
+			path = SettingView;
+			sourceTree = "<group>";
+		};
+		1DC374882B2765E300D9214C /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				1DC374862B2756AB00D9214C /* PaddingLabel.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		714B741F2B20C82500326AEC /* Controllers */ = {
@@ -118,8 +141,9 @@
 		714B74202B20C82C00326AEC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1DC374882B2765E300D9214C /* CustomView */,
+				1D7F7B182B2702BD008DEFE8 /* SettingView */,
 				71B3DDE52B21722C00F58CE4 /* HomeView.swift */,
-				71B3DDE72B2172B900F58CE4 /* SettingView.swift */,
 				71EB13DC2B206DFB00728077 /* MainTabBarView.swift */,
 				1D7F7B082B26E59A008DEFE8 /* SearchView.swift */,
 				1D7F7B0A2B26E5B3008DEFE8 /* SearchResultView.swift */,
@@ -351,6 +375,8 @@
 				71B3DDF22B219B6200F58CE4 /* MainTabBarViewViewController.swift in Sources */,
 				1D7F7B112B26E60A008DEFE8 /* ResultMapViewViewController.swift in Sources */,
 				1D7F7B0D2B26E5CD008DEFE8 /* SearchResultViewViewController.swift in Sources */,
+				1DC374872B2756AB00D9214C /* PaddingLabel.swift in Sources */,
+				1D7F7B1C2B272A8C008DEFE8 /* SettingViewTableViewCell.swift in Sources */,
 				714B74232B20C89F00326AEC /* Extensions.swift in Sources */,
 				1D7F7B152B26E6D5008DEFE8 /* CompareViewViewController.swift in Sources */,
 			);
