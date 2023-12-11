@@ -1,16 +1,24 @@
 PODS:
   - KakaoMapsSDK (2.6.0)
+  - NMapsGeometry (1.0.1)
+  - NMapsMap (3.17.0):
+    - NMapsGeometry
 
 DEPENDENCIES:
   - KakaoMapsSDK (= 2.6.0)
+  - NMapsMap
 
 SPEC REPOS:
   trunk:
     - KakaoMapsSDK
+    - NMapsGeometry
+    - NMapsMap
 
 SPEC CHECKSUMS:
   KakaoMapsSDK: 8c3773d15cdfb7ab6d697c95b99ba60e9c2ae02b
+  NMapsGeometry: 53c573ead66466681cf123f99f698dc8071a4b83
+  NMapsMap: a5b909a31b6f3d27a670f6eb2ddc913c38975474
 
-PODFILE CHECKSUM: 4618814eb5a57a8b55a6086373fb660f3ef46597
+PODFILE CHECKSUM: 45980a66aa20f02b7082e0de6bbc419333b4f096
 
-COCOAPODS: 1.14.3
+COCOAPODS: 1.14.2
