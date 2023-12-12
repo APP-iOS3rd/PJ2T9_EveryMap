@@ -9,5 +9,8 @@ import Foundation
 
 class SettingViewViewController {
     
-    init() { }
+    init() { 
+        
+    }
+    
 }
