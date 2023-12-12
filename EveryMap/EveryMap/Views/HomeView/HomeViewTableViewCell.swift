@@ -14,7 +14,7 @@ class HomeViewTableViewCell: UITableViewCell {
     let placeLabel : PaddingLabel = {
         let label = PaddingLabel()
         label.textColor = .black
-        label.font = .systemFont(ofSize: 18)
+        label.font = .boldSystemFont(ofSize: 16)
         label.topPadding = 15
         label.bottomPadding = 15
         label.leftPadding = 25
@@ -57,7 +57,7 @@ class HomeViewTableViewCell: UITableViewCell {
             placeImg.widthAnchor.constraint(equalToConstant: 30),
             placeImg.heightAnchor.constraint(equalToConstant: 30),
             
-            placeLabel.leadingAnchor.constraint(equalTo: placeImg.trailingAnchor, constant: 5),
+            placeLabel.leadingAnchor.constraint(equalTo: placeImg.trailingAnchor),
             placeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 10),
             placeLabel.centerYAnchor.constraint(equalTo: placeImg.centerYAnchor)
         ])
