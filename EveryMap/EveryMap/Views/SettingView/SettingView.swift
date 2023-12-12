@@ -111,11 +111,17 @@ extension SettingView: UITableViewDataSource {
 
 }
 
-// MARK: - TableView Delegate
+// MARK: - TableView Delegate (각 셀 선택 되었을 때 동작)
 extension SettingView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // cell 선택했을 때 수행할 동작 여기서 구현하면 됨
-        print(indexPath.row)
+        let settingItem = SettingItem(rawValue: indexPath.row)!
+        
+        switch settingItem {
+        case .appVersion: break
+        case .customerService: break
+        case .helpAndSupport: self.present(GuidanceView(), animated: true)
+        }
         
         // cell 선택된 상태 해제
         tableView.deselectRow(at: indexPath, animated: true)
