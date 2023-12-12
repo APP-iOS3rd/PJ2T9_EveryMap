@@ -25,29 +25,29 @@ struct Route: Codable {
 // MARK: - Traoptimal
 struct Traoptimal: Codable {
     let summary: Summary
-    let path: [[Double]]
-    let section: [Section]
-    let guide: [Guide]
+//    let path: [[Double]]
+//    let section: [Section]
+//    let guide: [Guide]
 }
 
 // MARK: - Guide
-struct Guide: Codable {
-    let pointIndex:Int
-    let type: Int
-    let instructions: String
-    let distance: Int
-    let duration: Int
-}
+//struct Guide: Codable {
+//    let pointIndex:Int
+//    let type: Int
+//    let instructions: String
+//    let distance: Int
+//    let duration: Int
+//}
 
 // MARK: - Section
-struct Section: Codable {
-    let pointIndex: Int
-    let pointCount: Int
-    let distance: Int
-    let name: String
-    let congestion: Int
-    let speed: Int
-}
+//struct Section: Codable {
+//    let pointIndex: Int
+//    let pointCount: Int
+//    let distance: Int
+//    let name: String
+//    let congestion: Int
+//    let speed: Int
+//}
 
 // MARK: - Summary
 struct Summary: Codable {
