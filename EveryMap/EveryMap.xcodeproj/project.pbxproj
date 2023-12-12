@@ -23,6 +23,12 @@
 		1DF24EAF2B27F8990020D30C /* TMapRouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF24EAD2B27F8990020D30C /* TMapRouteModel.swift */; };
 		1DF24EB02B27F8990020D30C /* NMapRouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF24EAE2B27F8990020D30C /* NMapRouteModel.swift */; };
 		1DF24EB22B27FCCE0020D30C /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF24EB12B27FCCE0020D30C /* APIManager.swift */; };
+		7107A3E72B283E520070B87B /* GuidanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3E62B283E520070B87B /* GuidanceView.swift */; };
+		7107A3E82B283EAF0070B87B /* Pods_EveryMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97529F93E49902EE90AE5BF4 /* Pods_EveryMap.framework */; };
+		7107A3E92B283EAF0070B87B /* Pods_EveryMap.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 97529F93E49902EE90AE5BF4 /* Pods_EveryMap.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7107A3EC2B283ED50070B87B /* TMapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7107A3EA2B283ED30070B87B /* TMapSDK.framework */; };
+		7107A3ED2B283ED50070B87B /* TMapSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7107A3EA2B283ED30070B87B /* TMapSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7107A3F02B2840590070B87B /* HomeViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3EF2B2840590070B87B /* HomeViewTableViewCell.swift */; };
 		714B74232B20C89F00326AEC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B74222B20C89F00326AEC /* Extensions.swift */; };
 		71B3DDE62B21722C00F58CE4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDE52B21722C00F58CE4 /* HomeView.swift */; };
 		71B3DDE82B2172B900F58CE4 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDE72B2172B900F58CE4 /* SettingView.swift */; };
@@ -74,6 +80,9 @@
 		1DF24EAE2B27F8990020D30C /* NMapRouteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NMapRouteModel.swift; sourceTree = "<group>"; };
 		1DF24EB12B27FCCE0020D30C /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		6A01C15D2F2500C3C89E118C /* Pods-EveryMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryMap.debug.xcconfig"; path = "Target Support Files/Pods-EveryMap/Pods-EveryMap.debug.xcconfig"; sourceTree = "<group>"; };
+		7107A3E62B283E520070B87B /* GuidanceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidanceView.swift; sourceTree = "<group>"; };
+		7107A3EA2B283ED30070B87B /* TMapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TMapSDK.framework; sourceTree = "<group>"; };
+		7107A3EF2B2840590070B87B /* HomeViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewTableViewCell.swift; sourceTree = "<group>"; };
 		714B74222B20C89F00326AEC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		71B3DDE52B21722C00F58CE4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		71B3DDE72B2172B900F58CE4 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -111,7 +120,7 @@
 			children = (
 				71B3DDE72B2172B900F58CE4 /* SettingView.swift */,
 				1D7F7B1B2B272A8B008DEFE8 /* SettingViewTableViewCell.swift */,
-				1DA3F13C2B28432600C8A8BF /* GuidanceView.swift */,
+				7107A3E62B283E520070B87B /* GuidanceView.swift */,
 			);
 			path = SettingView;
 			sourceTree = "<group>";
@@ -133,6 +142,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		7107A3EE2B28403A0070B87B /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				71B3DDE52B21722C00F58CE4 /* HomeView.swift */,
+				7107A3EF2B2840590070B87B /* HomeViewTableViewCell.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
 		714B741F2B20C82500326AEC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,9 +168,9 @@
 		714B74202B20C82C00326AEC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7107A3EE2B28403A0070B87B /* HomeView */,
 				1DC374882B2765E300D9214C /* CustomView */,
 				1D7F7B182B2702BD008DEFE8 /* SettingView */,
-				71B3DDE52B21722C00F58CE4 /* HomeView.swift */,
 				71EB13DC2B206DFB00728077 /* MainTabBarView.swift */,
 				1D7F7B082B26E59A008DEFE8 /* SearchView.swift */,
 				1D7F7B0A2B26E5B3008DEFE8 /* SearchResultView.swift */,
@@ -372,9 +390,11 @@
 				71B3DDE62B21722C00F58CE4 /* HomeView.swift in Sources */,
 				1DF24EAF2B27F8990020D30C /* TMapRouteModel.swift in Sources */,
 				71EB13DD2B206DFB00728077 /* MainTabBarView.swift in Sources */,
+				7107A3E72B283E520070B87B /* GuidanceView.swift in Sources */,
 				71B3DDEE2B219B0000F58CE4 /* HomeViewViewController.swift in Sources */,
 				1D7F7B0F2B26E5FB008DEFE8 /* ResultMapView.swift in Sources */,
 				1D7F7B072B26E583008DEFE8 /* SearchViewViewController.swift in Sources */,
+				7107A3F02B2840590070B87B /* HomeViewTableViewCell.swift in Sources */,
 				1D7F7B0B2B26E5B3008DEFE8 /* SearchResultView.swift in Sources */,
 				71B3DDF02B219B0A00F58CE4 /* SettingViewViewController.swift in Sources */,
 				1D7F7B132B26E6C4008DEFE8 /* CompareView.swift in Sources */,
@@ -543,6 +563,8 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EveryMap/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치정보 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치정보 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -553,7 +575,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Seonghyeon.EveryMap12;
+				PRODUCT_BUNDLE_IDENTIFIER = Seonghyeon.EveryMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -577,6 +599,8 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EveryMap/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치정보 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치정보 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -587,7 +611,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Seonghyeon.EveryMap12;
+				PRODUCT_BUNDLE_IDENTIFIER = Seonghyeon.EveryMap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

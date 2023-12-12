@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // 윈도우의 크기 설정
         window = UIWindow(frame: UIScreen.main.bounds)
         // 뿌리 뷰컨트롤러 설정
-        let vc = MainTabBarView()
+        let vc = UINavigationController(rootViewController: MainTabBarView())
         window?.rootViewController = vc
         // 설정한 윈도우를 보이게끔 설정
         window?.makeKeyAndVisible()
