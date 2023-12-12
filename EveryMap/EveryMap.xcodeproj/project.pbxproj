@@ -31,12 +31,17 @@
 		71B3DDEE2B219B0000F58CE4 /* HomeViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDED2B219B0000F58CE4 /* HomeViewViewController.swift */; };
 		71B3DDF02B219B0A00F58CE4 /* SettingViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDEF2B219B0A00F58CE4 /* SettingViewViewController.swift */; };
 		71B3DDF22B219B6200F58CE4 /* MainTabBarViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDF12B219B6200F58CE4 /* MainTabBarViewViewController.swift */; };
+		71C2AE5B2B26EF79005BA51B /* APIKEY-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71C2AE5A2B26EF79005BA51B /* APIKEY-Info.plist */; };
+		71C2AE7C2B26F743005BA51B /* Pods_EveryMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97529F93E49902EE90AE5BF4 /* Pods_EveryMap.framework */; };
+		71C2AE7D2B26F743005BA51B /* Pods_EveryMap.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 97529F93E49902EE90AE5BF4 /* Pods_EveryMap.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		71C2AE7E2B26F744005BA51B /* TMapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C2AE582B26EF6A005BA51B /* TMapSDK.framework */; };
+		71C2AE7F2B26F744005BA51B /* TMapSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71C2AE582B26EF6A005BA51B /* TMapSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+
 		71EB13D92B206DFB00728077 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EB13D82B206DFB00728077 /* AppDelegate.swift */; };
 		71EB13DB2B206DFB00728077 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EB13DA2B206DFB00728077 /* SceneDelegate.swift */; };
 		71EB13DD2B206DFB00728077 /* MainTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EB13DC2B206DFB00728077 /* MainTabBarView.swift */; };
 		71EB13E22B206DFC00728077 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71EB13E12B206DFC00728077 /* Assets.xcassets */; };
 		71EB13E52B206DFC00728077 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71EB13E32B206DFC00728077 /* LaunchScreen.storyboard */; };
-		E762AAB3EBE884ED30135EA3 /* Pods_EveryMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97529F93E49902EE90AE5BF4 /* Pods_EveryMap.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,7 +51,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				1DF24EA72B2775AF0020D30C /* TMapSDK.framework in Embed Frameworks */,
+				71C2AE7D2B26F743005BA51B /* Pods_EveryMap.framework in Embed Frameworks */,
+				71C2AE7F2B26F744005BA51B /* TMapSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,8 +100,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E762AAB3EBE884ED30135EA3 /* Pods_EveryMap.framework in Frameworks */,
-				1DF24EA62B2775AF0020D30C /* TMapSDK.framework in Frameworks */,
+				71C2AE7C2B26F743005BA51B /* Pods_EveryMap.framework in Frameworks */,
+				71C2AE7E2B26F744005BA51B /* TMapSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,7 +537,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3D57ZF2MPX;
+				DEVELOPMENT_TEAM = J3XZ67KDFK;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -549,7 +555,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Seonghyeon.EveryMap123;
+				PRODUCT_BUNDLE_IDENTIFIER = Seonghyeon.EveryMap12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -565,7 +571,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3D57ZF2MPX;
+				DEVELOPMENT_TEAM = J3XZ67KDFK;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -583,7 +589,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Seonghyeon.EveryMap123;
+				PRODUCT_BUNDLE_IDENTIFIER = Seonghyeon.EveryMap12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
