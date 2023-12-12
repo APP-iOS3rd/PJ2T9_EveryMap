@@ -46,3 +46,10 @@ extension UIView {
         }
     }
 }
+
+extension UINavigationController {
+    func setupBarAppearance() {
+           let appearance = UINavigationBarAppearance()
+           navigationBar.isTranslucent = true
+       }
+}
