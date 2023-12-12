@@ -61,7 +61,7 @@ class HomeView: UIViewController {
 extension HomeView {
     // MARK: - HomeView 화면 설정 함수
     func setupHomeView() {
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .systemBackground
         setUpSearchController()
         self.view.addSubviews(mainMapView,lastSearchLable,tableView)
         locationManager.delegate = self
@@ -106,17 +106,7 @@ extension HomeView {
         self.searchController.obscuresBackgroundDuringPresentation = false
         self.searchController.searchBar.placeholder = "장소, 주소 검색"
         self.searchController.hidesNavigationBarDuringPresentation = true
-        
-        if let textField = searchController.searchBar.value(forKey: "searchField") as? UITextField {
-            textField.backgroundColor = .white
-            textField.leftView?.tintColor = .black
-//            if let placeholder = textField.value(forKey: "placeholderLabel") as? UILabel{
-//                print("placeholder 발견")
-//            }
-            if let iconbtn = textField.value(forKey: "clearButton") as? UIButton {
-                iconbtn.tintColor = .black
-            }
-        }
+        self.searchController.searchBar.searchTextField.backgroundColor = .systemBackground
         
         self.navigationItem.searchController = searchController
         self.navigationItem.searchController?.searchBar.layer.shadowOpacity = 0.3

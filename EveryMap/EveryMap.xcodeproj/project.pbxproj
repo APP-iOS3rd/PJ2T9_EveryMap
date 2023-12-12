@@ -16,20 +16,16 @@
 		1D7F7B132B26E6C4008DEFE8 /* CompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F7B122B26E6C4008DEFE8 /* CompareView.swift */; };
 		1D7F7B152B26E6D5008DEFE8 /* CompareViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F7B142B26E6D5008DEFE8 /* CompareViewViewController.swift */; };
 		1D7F7B1C2B272A8C008DEFE8 /* SettingViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F7B1B2B272A8B008DEFE8 /* SettingViewTableViewCell.swift */; };
-		1DA3F1392B2842DD00C8A8BF /* TMapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA3F1382B2842DD00C8A8BF /* TMapSDK.framework */; };
 		1DA3F13B2B2842F100C8A8BF /* APIKEY-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1DA3F13A2B2842F100C8A8BF /* APIKEY-Info.plist */; };
-		1DA3F13D2B28432600C8A8BF /* GuidanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA3F13C2B28432600C8A8BF /* GuidanceView.swift */; };
 		1DC374872B2756AB00D9214C /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC374862B2756AB00D9214C /* PaddingLabel.swift */; };
 		1DF24EAF2B27F8990020D30C /* TMapRouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF24EAD2B27F8990020D30C /* TMapRouteModel.swift */; };
 		1DF24EB02B27F8990020D30C /* NMapRouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF24EAE2B27F8990020D30C /* NMapRouteModel.swift */; };
 		1DF24EB22B27FCCE0020D30C /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF24EB12B27FCCE0020D30C /* APIManager.swift */; };
 		7107A3E72B283E520070B87B /* GuidanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3E62B283E520070B87B /* GuidanceView.swift */; };
-		7107A3E82B283EAF0070B87B /* Pods_EveryMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97529F93E49902EE90AE5BF4 /* Pods_EveryMap.framework */; };
-		7107A3E92B283EAF0070B87B /* Pods_EveryMap.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 97529F93E49902EE90AE5BF4 /* Pods_EveryMap.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7107A3EC2B283ED50070B87B /* TMapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7107A3EA2B283ED30070B87B /* TMapSDK.framework */; };
-		7107A3ED2B283ED50070B87B /* TMapSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7107A3EA2B283ED30070B87B /* TMapSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7107A3F02B2840590070B87B /* HomeViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3EF2B2840590070B87B /* HomeViewTableViewCell.swift */; };
 		714B74232B20C89F00326AEC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B74222B20C89F00326AEC /* Extensions.swift */; };
+		7152AC2C2B28B97900E3EE7E /* TMapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA3F1382B2842DD00C8A8BF /* TMapSDK.framework */; };
+		7152AC2D2B28B97900E3EE7E /* TMapSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DA3F1382B2842DD00C8A8BF /* TMapSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71B3DDE62B21722C00F58CE4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDE52B21722C00F58CE4 /* HomeView.swift */; };
 		71B3DDE82B2172B900F58CE4 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDE72B2172B900F58CE4 /* SettingView.swift */; };
 		71B3DDEA2B217B9600F58CE4 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDE92B217B9600F58CE4 /* Enums.swift */; };
@@ -56,6 +52,7 @@
 			files = (
 				71C2AE7D2B26F743005BA51B /* Pods_EveryMap.framework in Embed Frameworks */,
 				71C2AE7F2B26F744005BA51B /* (null) in Embed Frameworks */,
+				7152AC2D2B28B97900E3EE7E /* TMapSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,7 +78,6 @@
 		1DF24EB12B27FCCE0020D30C /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		6A01C15D2F2500C3C89E118C /* Pods-EveryMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryMap.debug.xcconfig"; path = "Target Support Files/Pods-EveryMap/Pods-EveryMap.debug.xcconfig"; sourceTree = "<group>"; };
 		7107A3E62B283E520070B87B /* GuidanceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidanceView.swift; sourceTree = "<group>"; };
-		7107A3EA2B283ED30070B87B /* TMapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TMapSDK.framework; sourceTree = "<group>"; };
 		7107A3EF2B2840590070B87B /* HomeViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewTableViewCell.swift; sourceTree = "<group>"; };
 		714B74222B20C89F00326AEC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		71B3DDE52B21722C00F58CE4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -108,7 +104,7 @@
 			files = (
 				71C2AE7C2B26F743005BA51B /* Pods_EveryMap.framework in Frameworks */,
 				71C2AE7E2B26F744005BA51B /* (null) in Frameworks */,
-				1DA3F1392B2842DD00C8A8BF /* TMapSDK.framework in Frameworks */,
+				7152AC2C2B28B97900E3EE7E /* TMapSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +186,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		7152AC2B2B28B7D400E3EE7E /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				1DA3F13C2B28432600C8A8BF /* GuidanceView.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		71B3DDE42B216F3E00F58CE4 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +211,7 @@
 				71EB13D62B206DFB00728077 /* Products */,
 				9984F9415C0BE3149CBD93CA /* Pods */,
 				7E3FBA74022993D89A3061B9 /* Frameworks */,
+				7152AC2B2B28B7D400E3EE7E /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -385,7 +390,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DA3F13D2B28432600C8A8BF /* GuidanceView.swift in Sources */,
 				1DF24EB22B27FCCE0020D30C /* APIManager.swift in Sources */,
 				71B3DDE62B21722C00F58CE4 /* HomeView.swift in Sources */,
 				1DF24EAF2B27F8990020D30C /* TMapRouteModel.swift in Sources */,
