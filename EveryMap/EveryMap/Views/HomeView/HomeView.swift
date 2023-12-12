@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import TMapSDK
+import CoreLocation
 import NMapsMap
 
 class HomeView: UIViewController {
@@ -16,7 +16,7 @@ class HomeView: UIViewController {
     let mainMapView : NMFNaverMapView = {
         let naverMapView = NMFNaverMapView()
         naverMapView.showLocationButton = true
-        let mapView = naverMapView.mapView
+        naverMapView.mapView.positionMode = .normal
         naverMapView.isHidden = false
         return naverMapView
     }()
@@ -43,7 +43,8 @@ class HomeView: UIViewController {
     }()
     
     var testArr : [String] = ["인천국제공항", "학동평화맨션", "서울역"]
-    let homeviewController = HomeViewViewController()
+//    let homeviewController = HomeViewViewController()
+    var locationManager = CLLocationManager()
     
     convenience init(title: String) {
         self.init()
@@ -63,14 +64,20 @@ extension HomeView {
         self.view.backgroundColor = .white
         setUpSearchController()
         self.view.addSubviews(mainMapView,lastSearchLable,tableView)
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        
+        startUpdatingUserLocation()
+        
         self.tableView.register(HomeViewTableViewCell.self, forCellReuseIdentifier: HomeViewTableViewCell.cellId)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
-//        self.tableView.rowHeight = UITableView.automaticDimension
-//        self.tableView.estimatedRowHeight = UITableView.automaticDimension
         setupConstraints()
     }
+    
+    
     // MARK: - HomeView 화면에 있는 Constraints 설정 함수
     func setupConstraints() {
         // 임시로 TMapView로 표현함
@@ -112,14 +119,15 @@ extension HomeView {
         }
         
         self.navigationItem.searchController = searchController
-        self.navigationItem.searchController?.searchBar.layer.shadowOpacity = 0.5
+        self.navigationItem.searchController?.searchBar.layer.shadowOpacity = 0.3
         self.navigationItem.searchController?.searchBar.layer.shadowOffset = CGSize(width: 3, height: 3)
         self.navigationItem.searchController?.searchBar.searchTextField.textColor = .black
         
-//        btn.layer.shadowOffset = CGSize(width: 3, height: 3)
         self.navigationController?.setupBarAppearance()
         self.definesPresentationContext = true
     }
+    
+    
 }
 
 // MARK: - HomeView - TableView
@@ -130,11 +138,8 @@ extension HomeView : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeViewTableViewCell.cellId, for: indexPath) as! HomeViewTableViewCell
-        
         cell.backgroundColor = .white
-        
         cell.placeLabel.text = testArr[indexPath.row]
-        
         return cell
     }
 }
@@ -144,6 +149,38 @@ extension HomeView : UITableViewDelegate {
         // cell 선택했을 때 수행할 동작 여기서 구현하면 됨
         tableView.deselectRow(at: indexPath, animated: true)
     }
+}
+
+// MARK: - 지도 관련 Methods
+extension HomeView {
+    // MARK: - HomeView 현재 위치 버튼 함수
+    func startUpdatingUserLocation() {
+        DispatchQueue.global().async {
+            if CLLocationManager.locationServicesEnabled() {
+                print("위치 서비스 On 상태")
+                self.locationManager.startUpdatingLocation()
+                print(self.locationManager.location?.coordinate)
+            } else {
+                print("위치 서비스 Off 상태")
+            }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("현재 위치 업데이트 완료.")
+        if let location = locations.first {
+            print("위도 : \(location.coordinate.latitude), 경도 : \(location.coordinate.longitude)")
+            let lat = location.coordinate.latitude
+            let lng = location.coordinate.longitude
+            
+            let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: lat ?? 0.0, lng: lng ?? 0.0), zoomTo: 15)
+            cameraUpdate.animation = .easeIn
+            cameraUpdate.animationDuration = 0.2
+            
+            self.mainMapView.mapView.moveCamera(cameraUpdate)
+        }
+    }
+    
 }
 
 // MARK: - SearchController 내의 텍스트가 변경될 때마다 호출되는 프로토콜
@@ -169,9 +206,6 @@ extension HomeView : UISearchControllerDelegate, UISearchBarDelegate {
     
 }
 
-//extension HomeView : UISearchBarDelegate {
-//    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-//        print("\(selectedScope)")
-//    }
-//}
-
+extension HomeView : CLLocationManagerDelegate {
+    
+}
