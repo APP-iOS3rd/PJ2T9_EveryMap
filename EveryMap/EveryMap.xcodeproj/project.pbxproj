@@ -23,6 +23,7 @@
 		1DF24EA92B2776260020D30C /* GuidanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF24EA82B2776260020D30C /* GuidanceView.swift */; };
 		1DF24EAF2B27F8990020D30C /* TMapRouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF24EAD2B27F8990020D30C /* TMapRouteModel.swift */; };
 		1DF24EB02B27F8990020D30C /* NMapRouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF24EAE2B27F8990020D30C /* NMapRouteModel.swift */; };
+		1DF24EB22B27FCCE0020D30C /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF24EB12B27FCCE0020D30C /* APIManager.swift */; };
 		714B74232B20C89F00326AEC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B74222B20C89F00326AEC /* Extensions.swift */; };
 		71B3DDE62B21722C00F58CE4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDE52B21722C00F58CE4 /* HomeView.swift */; };
 		71B3DDE82B2172B900F58CE4 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDE72B2172B900F58CE4 /* SettingView.swift */; };
@@ -68,6 +69,7 @@
 		1DF24EA82B2776260020D30C /* GuidanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GuidanceView.swift; path = "../../../../../../../Library/Mobile Documents/.Trash/PJ2T9_EveryMap 오전 1.50.11/EveryMap/EveryMap/Views/SettingView/GuidanceView.swift"; sourceTree = "<group>"; };
 		1DF24EAD2B27F8990020D30C /* TMapRouteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMapRouteModel.swift; sourceTree = "<group>"; };
 		1DF24EAE2B27F8990020D30C /* NMapRouteModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NMapRouteModel.swift; sourceTree = "<group>"; };
+		1DF24EB12B27FCCE0020D30C /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		6A01C15D2F2500C3C89E118C /* Pods-EveryMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryMap.debug.xcconfig"; path = "Target Support Files/Pods-EveryMap/Pods-EveryMap.debug.xcconfig"; sourceTree = "<group>"; };
 		714B74222B20C89F00326AEC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		71B3DDE52B21722C00F58CE4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			children = (
 				714B74222B20C89F00326AEC /* Extensions.swift */,
 				71B3DDE92B217B9600F58CE4 /* Enums.swift */,
+				1DF24EB12B27FCCE0020D30C /* APIManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DF24EB22B27FCCE0020D30C /* APIManager.swift in Sources */,
 				71B3DDE62B21722C00F58CE4 /* HomeView.swift in Sources */,
 				1DF24EAF2B27F8990020D30C /* TMapRouteModel.swift in Sources */,
 				71EB13DD2B206DFB00728077 /* MainTabBarView.swift in Sources */,
