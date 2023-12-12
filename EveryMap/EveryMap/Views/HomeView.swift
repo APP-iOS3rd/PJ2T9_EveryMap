@@ -121,4 +121,3 @@ extension HomeView : UISearchControllerDelegate {
 //        print("\(selectedScope)")
 //    }
 //}
-
