@@ -7,18 +7,18 @@
 
 import UIKit
 import TMapSDK
+import NMapsMap
 
 class HomeView: UIViewController {
     
     private let searchController = UISearchController(searchResultsController: nil)
     
-    let tmapcontainer : UIView = {
-       let view = UIView()
-        view.isHidden = false
-        let mapView = TMapView(frame: view.frame)
-        view.addSubview(mapView)
-        mapView.setApiKey(Bundle.main.TmapApiKey!)
-        return view
+    let mainMapView : NMFNaverMapView = {
+        let naverMapView = NMFNaverMapView()
+        naverMapView.showLocationButton = true
+        let mapView = naverMapView.mapView
+        naverMapView.isHidden = false
+        return naverMapView
     }()
     
     let tableView : UITableView = {
@@ -51,7 +51,6 @@ class HomeView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         setupHomeView()
     }
@@ -63,7 +62,7 @@ extension HomeView {
     func setupHomeView() {
         self.view.backgroundColor = .white
         setUpSearchController()
-        self.view.addSubviews(tmapcontainer,lastSearchLable,tableView)
+        self.view.addSubviews(mainMapView,lastSearchLable,tableView)
         self.tableView.register(HomeViewTableViewCell.self, forCellReuseIdentifier: HomeViewTableViewCell.cellId)
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -76,10 +75,10 @@ extension HomeView {
     func setupConstraints() {
         // 임시로 TMapView로 표현함
         NSLayoutConstraint.activate([
-            tmapcontainer.topAnchor.constraint(equalTo: self.view.topAnchor),
-            tmapcontainer.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
-            tmapcontainer.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            tmapcontainer.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            mainMapView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            mainMapView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            mainMapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            mainMapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             
             lastSearchLable.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             lastSearchLable.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
@@ -155,18 +154,19 @@ extension HomeView : UISearchResultsUpdating {
 }
 
 // MARK: - SearchController 내에 응답자가 있는지 없는지 확인하는 프로토콜
-extension HomeView : UISearchControllerDelegate {
+extension HomeView : UISearchControllerDelegate, UISearchBarDelegate {
     func willPresentSearchController(_ searchController: UISearchController) {
         tableView.isHidden = false
         lastSearchLable.isHidden = false
-        tmapcontainer.isHidden = true
+        mainMapView.isHidden = true
     }
     
     func willDismissSearchController(_ searchController: UISearchController) {
         tableView.isHidden = true
         lastSearchLable.isHidden = true
-        tmapcontainer.isHidden = false
+        mainMapView.isHidden = false
     }
+    
 }
 
 //extension HomeView : UISearchBarDelegate {
