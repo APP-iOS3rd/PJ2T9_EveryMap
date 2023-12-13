@@ -9,7 +9,7 @@
 
 import Foundation
 
-// MARK: - Post
+// MARK: - NMapRoute
 struct NMapRoute: Codable {
 //    let code: Int
 //    let message: String
@@ -20,9 +20,9 @@ struct NMapRoute: Codable {
 // MARK: - Route
 struct Route: Codable {
     let trafast: [Trafast]? //실시간 빠른길
-//    let tracomfort: [Tracomfort]? //실시간 편한길
     let traoptimal: [Traoptimal]? //실시간 최적
     let traavoidtoll: [Traavoidtoll]? //무료 우선
+    //    let tracomfort: [Tracomfort]? //실시간 편한길
 //    let traavoidcaronly: [Traavoidcaronly]? //자동차 전용도로 회피 우선
 }
 
@@ -70,7 +70,7 @@ struct Traavoidcaronly: Codable {
 // MARK: - Summary
 struct Summary: Codable {
     let totalDistance: Int //총 거리 : totalDistance/1000 km
-    let totalTime: Int //총 시간  
+    let totalTime: Int //총 시간
     let totalFare: Int //총 요금
     let taxiFare: Int //예상 택시 요금
     
