@@ -111,6 +111,47 @@ final class APIManager {
         
         return routeData
     }
+    
+    func sendRequest(goalAddress : String) -> Address? {
+        var addressdata : Address?
+        
+        let sessionConfig = URLSessionConfiguration.default
+        
+        /* Create session, and optionally set a URLSessionDelegate. */
+        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+        
+        guard var URL = URL(string: "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode") else { return nil }
+        let URLParams = [
+            "query": goalAddress,
+        ]
+        URL = URL.appendingQueryParameters(URLParams)
+        var request = URLRequest(url: URL)
+        request.httpMethod = "GET"
+        
+        // Headers
+        guard let nmapClientId = Bundle.main.NavermapClientId, let nmapClientSecret = Bundle.main.NavermapClientSecret else { return nil }
+        request.addValue(nmapClientId, forHTTPHeaderField: "X-NCP-APIGW-API-KEY-ID")
+        request.addValue(nmapClientSecret, forHTTPHeaderField: "X-NCP-APIGW-API-KEY")
+        
+        /* Start a new Task */
+        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+            guard let data = data, error == nil else {
+                print("에러발생.")
+                return
+            }
+            do {
+                let result = try JSONDecoder().decode(NMapAddressSearchModel.self, from: data)
+                print(result)
+                addressdata = result.addresses?.first
+            } catch {
+                print("JSON 디코딩 에러 : \(error)")
+            }
+        }
+        task.resume()
+        session.finishTasksAndInvalidate()
+        
+        return addressdata
+    }
 }
 
 protocol URLQueryParameterStringConvertible {
