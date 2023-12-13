@@ -13,6 +13,7 @@ class HomeView: UIViewController {
     
     private let searchController = UISearchController(searchResultsController: nil)
     private let apiManager = APIManager.manager
+    private var searchAddress : NMapAddressSearchModel?
     
     let mainMapView : NMFNaverMapView = {
         let naverMapView = NMFNaverMapView()
@@ -124,13 +125,14 @@ extension HomeView {
 // MARK: - HomeView - TableView
 extension HomeView : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        guard let search = searchAddress else { return 0 }
+        return search.meta?.totalCount ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeViewTableViewCell.cellId, for: indexPath) as! HomeViewTableViewCell
         cell.backgroundColor = .white
-        cell.placeLabel.text = testArr[indexPath.row]
+        cell.placeLabel.text = searchAddress?.addresses?[indexPath.row].roadAddress
         return cell
     }
 }
@@ -180,7 +182,19 @@ extension HomeView : UISearchResultsUpdating {
         print("DEBUG PRINT:", searchController.searchBar.text)
         guard let text = searchController.searchBar.text else { return }
         if text != "" {
-            print("목적지 위도: \(apiManager.sendRequest(goalAddress: text)?.x), 목적지 경도: \(apiManager.sendRequest(goalAddress: text)?.y)")
+            apiManager.loadSearchResult(goalAddress: text) { [weak self] result in
+                DispatchQueue.main.async {
+                    if let result = result {
+                        // API 응답 도착 시 주소 검색 결과 모델 업데이트
+                        self?.searchAddress = result
+                        print("Search Address Count: \(self?.searchAddress?.meta?.totalCount ?? 0)")
+                        // 테이블 뷰 업데이트
+                        self?.tableView.reloadData()
+                    } else {
+//                        print("결과가 없습니다.")
+                    }
+                }
+            }
         }
     }
 }
