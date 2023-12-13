@@ -17,16 +17,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
+        
         // 윈도우 씬을 가져온다.
         guard let windowScene = (scene as? UIWindowScene) else { return }
         // 윈도우의 크기 설정
         window = UIWindow(frame: UIScreen.main.bounds)
         // 뿌리 뷰컨트롤러 설정
-        let vc = MainTabBarView()
+        let vc = UINavigationController(rootViewController: MainTabBarView())
         window?.rootViewController = vc
         // 설정한 윈도우를 보이게끔 설정
         window?.makeKeyAndVisible()
         // 윈도우 씬 설정
+        window?.overrideUserInterfaceStyle = .light
         window?.windowScene = windowScene
     }
 

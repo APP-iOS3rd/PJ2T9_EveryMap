@@ -11,14 +11,20 @@ class MainTabBarView: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        // Tabbar 설정
-        setUpViews()
-        
+        setUI()
+        setTabBarControllers()
+    }
+}
+
+// MARK: - Methods
+
+extension MainTabBarView {
+    private func setUI() {
+        self.tabBar.backgroundColor = .black
+        self.tabBar.layer.cornerRadius = 20
     }
     
-    func setUpViews() {
+    func setTabBarControllers() {
         self.tabBar.backgroundColor = .white
         
         // bgColor -> "#colorLiteral(" 이라고 치면 사용할 수 있음
