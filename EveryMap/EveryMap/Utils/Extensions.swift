@@ -36,6 +36,21 @@ extension Bundle {
               let key = resource["Navermap-clientsecret"] as? String else { return nil }
         return key
     }
+    
+    var NaversearchClientId : String? {
+        guard let file = self.path(forResource: "APIKEY-Info", ofType: "plist"),
+              let resource = NSDictionary(contentsOfFile: file),
+              let key = resource["Naversearch-clientId"] as? String else { return nil }
+        return key
+    }
+    
+    var NaversearchClientSecret : String? {
+        guard let file = self.path(forResource: "APIKEY-Info", ofType: "plist"),
+              let resource = NSDictionary(contentsOfFile: file),
+              let key = resource["Naversearch-clientsecret"] as? String else { return nil }
+        return key
+    }
+    
 }
 
 extension UIView {

@@ -112,15 +112,15 @@ final class APIManager {
         return routeData
     }
     
-    func sendRequest(goalAddress : String) -> Address? {
-        var addressdata : Address?
+    func loadSearchResult(goalAddress : String, completion: @escaping (NMapAddressSearchModel?) -> Void) {
+        var addressdata : NMapAddressSearchModel?
         
         let sessionConfig = URLSessionConfiguration.default
         
         /* Create session, and optionally set a URLSessionDelegate. */
         let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
         
-        guard var URL = URL(string: "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode") else { return nil }
+        guard var URL = URL(string: "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode") else { return }
         let URLParams = [
             "query": goalAddress,
         ]
@@ -129,7 +129,7 @@ final class APIManager {
         request.httpMethod = "GET"
         
         // Headers
-        guard let nmapClientId = Bundle.main.NavermapClientId, let nmapClientSecret = Bundle.main.NavermapClientSecret else { return nil }
+        guard let nmapClientId = Bundle.main.NavermapClientId, let nmapClientSecret = Bundle.main.NavermapClientSecret else { return }
         request.addValue(nmapClientId, forHTTPHeaderField: "X-NCP-APIGW-API-KEY-ID")
         request.addValue(nmapClientSecret, forHTTPHeaderField: "X-NCP-APIGW-API-KEY")
         
@@ -141,16 +141,14 @@ final class APIManager {
             }
             do {
                 let result = try JSONDecoder().decode(NMapAddressSearchModel.self, from: data)
-                print(result)
-                addressdata = result.addresses?.first
+                addressdata = result
+                completion(addressdata)
             } catch {
                 print("JSON 디코딩 에러 : \(error)")
             }
         }
         task.resume()
         session.finishTasksAndInvalidate()
-        
-        return addressdata
     }
 }
 
