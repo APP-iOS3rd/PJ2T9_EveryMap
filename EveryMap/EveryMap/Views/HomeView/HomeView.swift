@@ -191,7 +191,7 @@ extension HomeView : UISearchResultsUpdating {
                         // 테이블 뷰 업데이트
                         self?.tableView.reloadData()
                     } else {
-//                        print("결과가 없습니다.")
+                        print("결과가 없습니다.")
                     }
                 }
             }
