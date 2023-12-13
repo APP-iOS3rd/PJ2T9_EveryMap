@@ -9,9 +9,7 @@ import Foundation
 
 //TMap API 경로탐색 DataModel
 
-import Foundation
-
-// MARK: - Post
+// MARK: - TMapRoute
 struct TMapRoute: Codable {
 //    let type: String
     let features: [Feature]

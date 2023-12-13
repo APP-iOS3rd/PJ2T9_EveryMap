@@ -11,23 +11,20 @@ import CoreLocation
 final class APIManager {
     static let manager = APIManager()
     
-//    private var tmapRouteData = [TMapRoute]()
-//    private var nmapRouteData = [NMapRoute]()
-//    
-//    private let tmapSearchOption = ["0", "1", "2"] //0: 추천, 1: 무료, 2: 최소시간
-//    private let nmapSearchOption = ["traoptimal", "traavoidtoll", "trafast"] //traoptimal: 추천, traavoidtoll: 무료, trafast: 최소시간
-    
     private init() {}
     
     // MARK: - TMap 경로탐색 API
-    func loadTMapRoute(startX: CLLocationDegrees, startY: CLLocationDegrees, endX: CLLocationDegrees, endY: CLLocationDegrees, searchOption: String) -> Properties? {
+    func loadTMapRoute(startX: CLLocationDegrees, startY: CLLocationDegrees, endX: CLLocationDegrees, endY: CLLocationDegrees, searchOption: String, completion: @escaping (Properties?) -> Void) {
         //총 거리, 총 시간, 총 요금, 예상 택시 요금 담아서 return 해줄 변수
         var routeData: Properties?
         
         let sessionConfig = URLSessionConfiguration.default
         let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
         
-        guard var tmapUrl = URL(string: "https://apis.openapi.sk.com/tmap/routes"), let tmapAppKey = Bundle.main.TmapApiKey else {return nil}
+        guard var tmapUrl = URL(string: "https://apis.openapi.sk.com/tmap/routes"), let tmapAppKey = Bundle.main.TmapApiKey else {
+            completion(nil)
+            return
+        }
         //TMap 경로탐색 Params
         let urlParams = [
             "version": "1",
@@ -49,35 +46,33 @@ final class APIManager {
         request.httpMethod = "POST"
         
         /* Start a new Task */
-        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
-            if (error == nil) {
-                // Success
-                guard let data = data, error == nil else { return }
+        let task = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+            if error == nil, let data = data {
                 let result = try? JSONDecoder().decode(TMapRoute.self, from: data)
                 routeData = result?.features[0].properties
-                //                print(result)
             }
-            else {
-                // Failure
-                print("URL Session Task Failed: %@", error!.localizedDescription);
-            }
-        })
+            
+            // 비동기 작업 완료 후 completion 클로저를 호출하여 결과를 전달
+            completion(routeData)
+        }
         task.resume()
         
         session.finishTasksAndInvalidate()
-        
-        return routeData
     }
     
     // MARK: - NMap 경로탐색 API
-    func loadNMapRoute(startX: CLLocationDegrees, startY: CLLocationDegrees, endX: CLLocationDegrees, endY: CLLocationDegrees, searchOption: String) -> Route? {
+    func loadNMapRoute(startX: CLLocationDegrees, startY: CLLocationDegrees, endX: CLLocationDegrees, endY: CLLocationDegrees, searchOption: String, completion: @escaping (Route?) -> Void) {
         var routeData: Route?
         
         let sessionConfig = URLSessionConfiguration.default
         
         let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
         
-        guard var nmapUrl = URL(string: "https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving") else {return nil}
+        guard var nmapUrl = URL(string: "https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving") else {
+            completion(nil)
+            return
+        }
+        
         let URLParams = [
             "start": "\(startX),\(startY)",
             "goal": "\(endX),\(endY)",
@@ -88,30 +83,31 @@ final class APIManager {
         request.httpMethod = "GET"
         
         // Headers
-        guard let nmapClientId = Bundle.main.NavermapClientId, let nmapClientSecret = Bundle.main.NavermapClientSecret else { return nil }
+        guard let nmapClientId = Bundle.main.NavermapClientId, let nmapClientSecret = Bundle.main.NavermapClientSecret else {
+            completion(nil)
+            return
+        }
         request.addValue(nmapClientId, forHTTPHeaderField: "X-NCP-APIGW-API-KEY-ID")
         request.addValue(nmapClientSecret, forHTTPHeaderField: "X-NCP-APIGW-API-KEY")
         
         /* Start a new Task */
-        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) -> Void in
-            if (error == nil) {
-                // Success
-                guard let data = data, error == nil else { return }
+        let task = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+            if error == nil, let data = data {
                 let result = try? JSONDecoder().decode(NMapRoute.self, from: data)
                 routeData = result?.route
-//                print(result)
+            } else {
+                // 에러 처리 등을 수행
+                print("URL Session Task Failed: %@", error!.localizedDescription)
             }
-            else {
-                // Failure
-                print("URL Session Task Failed: %@", error!.localizedDescription);
-            }
-        })
+            
+            // 비동기 작업 완료 후 completion 클로저를 호출하여 결과를 전달
+            completion(routeData)
+        }
         task.resume()
         session.finishTasksAndInvalidate()
-        
-        return routeData
     }
     
+    // MARK: - 지역 검색 API
     func loadSearchResult(goalAddress : String, completion: @escaping (NMapAddressSearchModel?) -> Void) {
         var addressdata : NMapAddressSearchModel?
         
