@@ -16,6 +16,7 @@
 		1D7F7B132B26E6C4008DEFE8 /* CompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F7B122B26E6C4008DEFE8 /* CompareView.swift */; };
 		1D7F7B152B26E6D5008DEFE8 /* CompareViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F7B142B26E6D5008DEFE8 /* CompareViewViewController.swift */; };
 		1D7F7B1C2B272A8C008DEFE8 /* SettingViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F7B1B2B272A8B008DEFE8 /* SettingViewTableViewCell.swift */; };
+
 		1DA3F13B2B2842F100C8A8BF /* APIKEY-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1DA3F13A2B2842F100C8A8BF /* APIKEY-Info.plist */; };
 		1DC374872B2756AB00D9214C /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC374862B2756AB00D9214C /* PaddingLabel.swift */; };
 		1DF24EAF2B27F8990020D30C /* TMapRouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF24EAD2B27F8990020D30C /* TMapRouteModel.swift */; };
@@ -52,7 +53,9 @@
 			files = (
 				71C2AE7D2B26F743005BA51B /* Pods_EveryMap.framework in Embed Frameworks */,
 				71C2AE7F2B26F744005BA51B /* (null) in Embed Frameworks */,
+
 				7152AC2D2B28B97900E3EE7E /* TMapSDK.framework in Embed Frameworks */,
+
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,6 +107,7 @@
 			files = (
 				71C2AE7C2B26F743005BA51B /* Pods_EveryMap.framework in Frameworks */,
 				71C2AE7E2B26F744005BA51B /* (null) in Frameworks */,
+
 				7152AC2C2B28B97900E3EE7E /* TMapSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -559,7 +563,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J3XZ67KDFK;
+				DEVELOPMENT_TEAM = 3D57ZF2MPX;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -579,8 +583,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+
 				PRODUCT_BUNDLE_IDENTIFIER = Seonghyeon.EveryMap;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+
+        PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -595,7 +601,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J3XZ67KDFK;
+				DEVELOPMENT_TEAM = 3D57ZF2MPX;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -615,7 +621,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+
 				PRODUCT_BUNDLE_IDENTIFIER = Seonghyeon.EveryMap;
+
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

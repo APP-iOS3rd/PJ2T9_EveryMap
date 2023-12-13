@@ -11,21 +11,56 @@ import Foundation
 
 // MARK: - Post
 struct NMapRoute: Codable {
-    let code: Int
-    let message: String
-    let currentDateTime: String
+//    let code: Int
+//    let message: String
+//    let currentDateTime: String
     let route: Route
 }
 
 // MARK: - Route
 struct Route: Codable {
-    let traoptimal: [Traoptimal]
+    let trafast: [Trafast]? //실시간 빠른길
+//    let tracomfort: [Tracomfort]? //실시간 편한길
+    let traoptimal: [Traoptimal]? //실시간 최적
+    let traavoidtoll: [Traavoidtoll]? //무료 우선
+//    let traavoidcaronly: [Traavoidcaronly]? //자동차 전용도로 회피 우선
+}
+
+// MARK: - Trafast
+struct Trafast: Codable {
+    let properties: Summary
+    enum CodingKeys: String, CodingKey {
+        case properties = "summary"
+    }
+}
+
+// MARK: - Tracomfort
+struct Tracomfort: Codable {
+    let properties: Summary
+    enum CodingKeys: String, CodingKey {
+        case properties = "summary"
+    }
 }
 
 // MARK: - Traoptimal
 struct Traoptimal: Codable {
     let properties: Summary
-    
+    enum CodingKeys: String, CodingKey {
+        case properties = "summary"
+    }
+}
+
+// MARK: - Traavoidtoll
+struct Traavoidtoll: Codable {
+    let properties: Summary
+    enum CodingKeys: String, CodingKey {
+        case properties = "summary"
+    }
+}
+
+// MARK: - Traavoidcaronly
+struct Traavoidcaronly: Codable {
+    let properties: Summary
     enum CodingKeys: String, CodingKey {
         case properties = "summary"
     }
