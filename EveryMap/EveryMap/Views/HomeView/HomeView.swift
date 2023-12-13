@@ -12,6 +12,7 @@ import NMapsMap
 class HomeView: UIViewController {
     
     private let searchController = UISearchController(searchResultsController: nil)
+    private let apiManager = APIManager.manager
     
     let mainMapView : NMFNaverMapView = {
         let naverMapView = NMFNaverMapView()
@@ -177,6 +178,10 @@ extension HomeView {
 extension HomeView : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         print("DEBUG PRINT:", searchController.searchBar.text)
+        guard let text = searchController.searchBar.text else { return }
+        if text != "" {
+            print("목적지 위도: \(apiManager.sendRequest(goalAddress: text)?.x), 목적지 경도: \(apiManager.sendRequest(goalAddress: text)?.y)")
+        }
     }
 }
 
