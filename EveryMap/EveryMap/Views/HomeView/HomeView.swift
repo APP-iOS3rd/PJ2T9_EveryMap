@@ -171,8 +171,6 @@ extension HomeView {
             let lng = location.coordinate.longitude
             
             let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: lat ?? 0.0, lng: lng ?? 0.0), zoomTo: 15)
-            cameraUpdate.animation = .easeIn
-            cameraUpdate.animationDuration = 0.2
             
             self.mainMapView.mapView.moveCamera(cameraUpdate)
         }

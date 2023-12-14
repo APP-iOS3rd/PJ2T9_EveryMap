@@ -15,11 +15,11 @@ class ResultMapView: UIViewController, UISearchBarDelegate {
     let destination : PaddingLabel = {
         let label = PaddingLabel()
         label.textAlignment = .left
-        label.topPadding = 15
+        label.topPadding = 10
         label.leftPadding = 25
-        label.bottomPadding = 15
-        label.font = .systemFont(ofSize: 18)
-        label.backgroundColor = .gray
+        label.bottomPadding = 10
+        label.font = .systemFont(ofSize: 15)
+        label.backgroundColor = .lightGray
         label.layer.cornerRadius = 15
 //        label.layer.shadowOpacity = 0.3
 //        label.layer.shadowOffset = CGSize(width: 3, height: 3)
@@ -30,8 +30,9 @@ class ResultMapView: UIViewController, UISearchBarDelegate {
     let mainMapView : NMFNaverMapView = {
         let naverMapView = NMFNaverMapView()
         naverMapView.showLocationButton = true
+        naverMapView.showZoomControls = false
         naverMapView.mapView.positionMode = .normal
-        naverMapView.isHidden = false
+        
         return naverMapView
     }()
     
@@ -57,6 +58,7 @@ class ResultMapView: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        setMapview()
     }
 }
 
@@ -67,8 +69,9 @@ extension ResultMapView {
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarController?.tabBar.isHidden = true
         
-        self.view.addSubviews(destination,completeBtn)
+        self.view.addSubviews(destination, mainMapView, completeBtn)
         destination.text = address?.roadAddress
+        
         
         NSLayoutConstraint.activate([
             destination.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -76,10 +79,35 @@ extension ResultMapView {
             destination.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             destination.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
             
+            mainMapView.topAnchor.constraint(equalTo: destination.bottomAnchor, constant: 10),
+            mainMapView.bottomAnchor.constraint(equalTo: completeBtn.topAnchor, constant: -10),
+            mainMapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            mainMapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            
             // completeBtn
             completeBtn.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
             completeBtn.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
             completeBtn.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
         ])
     }
+    
+    func setMapview(){
+        print("ResultMapView - setMapview() called")
+        let lat = Double(self.address?.y ?? "0.0")
+        let lng = Double(self.address?.x ?? "0.0")
+        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: lat ?? 0.0, lng: lng ?? 0.0), zoomTo: 14)
+        self.mainMapView.mapView.moveCamera(cameraUpdate)
+        
+        let marker = NMFMarker()
+        marker.position = NMGLatLng(lat: lat ?? 0.0, lng: lng ?? 0.0)
+        marker.mapView = mainMapView.mapView
+    }
 }
+
+extension ResultMapView {
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+}
+
