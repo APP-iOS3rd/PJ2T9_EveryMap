@@ -141,6 +141,9 @@ extension HomeView : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // cell 선택했을 때 수행할 동작 여기서 구현하면 됨
         tableView.deselectRow(at: indexPath, animated: true)
+        let vc = SearchResultView()
+        vc.address = searchAddress?.addresses?[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

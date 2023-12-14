@@ -9,10 +9,13 @@ import UIKit
 
 class SearchResultView: UIViewController {
 
+    var address : Address?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setUI()
     }
     
 
@@ -26,4 +29,12 @@ class SearchResultView: UIViewController {
     }
     */
 
+}
+
+extension SearchResultView {
+    func setUI() {
+        if let address = address {
+            print("정상")
+        }
+    }
 }
