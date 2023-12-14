@@ -27,8 +27,6 @@ struct SearchModel {
         }
         return totalArray
     }
-    
-    
 }
 
 // MARK: - NMapAddressSearchModel
