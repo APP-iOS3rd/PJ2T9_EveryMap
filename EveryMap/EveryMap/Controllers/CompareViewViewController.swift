@@ -16,10 +16,10 @@ class CompareViewViewController {
     private let tmapSearchOption = ["0", "1", "2"] //0: 추천, 1: 무료, 2: 최소시간
     private let nmapSearchOption = ["traoptimal", "traavoidtoll", "trafast"] //traoptimal: 추천, traavoidtoll: 무료, trafast: 최소시간
     
-    init(compareView: CompareView) {
+    init(compareView: CompareView, startX: CLLocationDegrees, startY: CLLocationDegrees, endX: CLLocationDegrees, endY: CLLocationDegrees) {
         self.compareView = compareView
         print("CompareViewViewController - init() called")
-        loadRouteData(startX: 126.928345, startY: 35.132873, endX: 126.9850380932383, endY: 37.566567545861645) { [weak self] in
+        loadRouteData(startX: startX, startY: startY, endX: endX, endY: endY) { [weak self] in
             guard let self = self else { return }
             print("All API requests completed!")
             // 여기에서 필요한 작업 수행
@@ -57,7 +57,7 @@ class CompareViewViewController {
                         fare = data.totalFare
                         taxiFare = data.taxiFare
                     }
-
+                    
                     
                     self.routeData.append(RouteDataModel(mapName: .NaverMap, startX: startX, startY: startY, endX: endX, endY: endY, searchOption: SearchOption(rawValue: index)!.option, totalDistance: distance, totalTime: time, totalFare: fare, taxiFare: taxiFare))
                 }
@@ -69,5 +69,24 @@ class CompareViewViewController {
             // 위의 그룹지어놓은 비동기 API 사용이 모두 끝나면 completion이 실행됨
             completion()
         }
+    }
+    
+
+    func getAMPMString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "a"
+        let currentTimeOfDay = dateFormatter.string(from: Date())
+        
+        return currentTimeOfDay
+    }
+    
+    func currentTime() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        
+        let currentTime = Date()
+        let formattedCurrentTime = dateFormatter.string(from: currentTime)
+        
+        return formattedCurrentTime
     }
 }
