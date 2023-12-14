@@ -12,7 +12,8 @@ class CompareView: UIViewController {
 
     private var compareviewViewController: CompareViewViewController?
     
-    var addressmodel : Address?
+    var searchAddress : Address?
+    var searchPlace : Item?
     var currentAddress : String?
     var startLocation : StartLocationModel?
     
@@ -98,7 +99,7 @@ class CompareView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let start = startLocation, let end = addressmodel, let currentAddress = currentAddress else { return }
+        guard let start = startLocation, let end = searchAddress, let currentAddress = currentAddress else { return }
         compareviewViewController = CompareViewViewController(compareView: self, startX: start.lng, startY: start.lat, endX: Double(end.x)!, endY: Double(end.y)!)
         
         routeDataTableView.register(CompareViewTableViewCell.self, forCellReuseIdentifier: CompareViewTableViewCell.cellId)
@@ -174,7 +175,7 @@ extension CompareView {
 
 extension CompareView {
     @objc private func showKakaoNavi() {
-        guard let compareviewVC = self.compareviewViewController, let start = self.startLocation, let end = self.addressmodel else {return}
+        guard let compareviewVC = self.compareviewViewController, let start = self.startLocation, let end = self.searchAddress else {return}
         compareviewVC.showKakaoMap(startX: start.lat, startY: start.lng, endX: Double(end.x)!, endY: Double(end.y)!)
     }
 }

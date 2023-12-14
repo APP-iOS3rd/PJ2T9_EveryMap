@@ -127,11 +127,15 @@ extension ResultMapView {
 
 extension ResultMapView {
     @objc private func pushCompareView() {
-//        let vc = CompareView()
-//        vc.addressmodel = addressmodel
-//        vc.currentAddress = currentAddress
-//        vc.startLocation = startLocation
-//        self.navigationController?.pushViewController(vc, animated: true)
+        let vc = CompareView()
+        if let address = searchAddress {
+            vc.searchAddress = searchAddress
+        } else {
+            vc.searchPlace = searchPlace
+        }
+        vc.currentAddress = currentAddress
+        vc.startLocation = startLocation
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func cameraUpdate(lat: Double, lng: Double) {
