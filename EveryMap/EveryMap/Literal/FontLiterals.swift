@@ -17,6 +17,10 @@ extension UIFont {
         return UIFont.font(.pretendardBold, ofSize: 24)
     }
     
+    @nonobjc class var h3: UIFont {
+        return UIFont.font(.pretendardBold, ofSize: 26)
+    }
+    
     @nonobjc class var b1: UIFont {
         return UIFont.font(.pretendardMedium, ofSize: 26)
     }
@@ -27,6 +31,10 @@ extension UIFont {
     
     @nonobjc class var b3: UIFont {
         return UIFont.font(.pretendardMedium, ofSize: 16)
+    }
+    
+    @nonobjc class var s1: UIFont {
+        return UIFont.font(.pretendardSemiBold, ofSize: 16)
     }
 }
 

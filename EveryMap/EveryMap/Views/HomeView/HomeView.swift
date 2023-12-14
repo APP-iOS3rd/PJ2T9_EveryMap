@@ -33,16 +33,42 @@ class HomeView: UIViewController {
         return view
     }()
     
+    private let searchPlaceLable = {
+       var label = PaddingLabel()
+        label.text = "검색어를 입력하세요!"
+        label.topPadding = 20
+        label.leftPadding = 25
+        label.bottomPadding = 10
+        label.font = .h2
+        label.textColor = .g1
+        label.textAlignment = .left
+        label.isHidden = true
+        return label
+    }()
+    
     private let searchResultLable = {
         var label = PaddingLabel()
         label.text = "검색 결과"
         label.topPadding = 20
-        label.leftPadding = 25
-        label.bottomPadding = 20
-        label.font = .boldSystemFont(ofSize: 32)
+        label.leftPadding = 10
+        label.font = .h2
         label.textColor = .black
         label.textAlignment = .left
-        label.backgroundColor = .white
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
+        label.isHidden = true
+        return label
+    }()
+    
+    private let searchCountLable = {
+        var label = PaddingLabel()
+        label.text = ""
+        label.topPadding = 10
+        label.leftPadding = 25
+        label.bottomPadding = 20
+        label.font = .s1
+        label.textColor = .black
+        label.textAlignment = .left
         label.isHidden = true
         return label
     }()
@@ -70,7 +96,7 @@ class HomeView: UIViewController {
 extension HomeView {
     func setupHomeView() {
         self.view.backgroundColor = .systemBackground
-        self.view.addSubviews(mainMapView,searchResultLable,tableView)
+        self.view.addSubviews(mainMapView, searchPlaceLable, searchResultLable, searchCountLable,  tableView)
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
@@ -88,11 +114,18 @@ extension HomeView {
             mainMapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             mainMapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             
-            searchResultLable.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            searchResultLable.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            searchResultLable.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            searchPlaceLable.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            searchPlaceLable.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             
-            tableView.topAnchor.constraint(equalTo: self.searchResultLable.bottomAnchor),
+            searchResultLable.leadingAnchor.constraint(equalTo: self.searchPlaceLable.trailingAnchor),
+            searchResultLable.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            searchResultLable.firstBaselineAnchor.constraint(equalTo: searchPlaceLable.firstBaselineAnchor),
+            
+            searchCountLable.topAnchor.constraint(equalTo: self.searchPlaceLable.bottomAnchor),
+            searchCountLable.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            searchCountLable.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            
+            tableView.topAnchor.constraint(equalTo: self.searchCountLable.bottomAnchor),
             tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
@@ -195,12 +228,28 @@ extension HomeView : UISearchResultsUpdating {
                         // API 응답 도착 시 주소 검색 결과 모델 업데이트
                         self?.searchAddress = result
                         print("Search Address Count: \(self?.searchAddress?.meta?.totalCount ?? 0)")
+                        if self?.searchAddress?.meta?.totalCount ?? 0 > 0 {
+                            self?.searchCountLable.isHidden = false
+                            self?.searchCountLable.text = "총 \(self?.searchAddress?.meta?.totalCount ?? 0)개 장소를 발견했어요!"
+                        } else {
+                            self?.searchCountLable.isHidden = true
+                        }
                         self?.tableView.reloadData()
+                        self?.searchPlaceLable.text = "\"" + text + "\""
+                        self?.searchPlaceLable.font = .h3
+                        self?.searchPlaceLable.textColor = .black
                     } else {
                         print("결과가 없습니다.")
                     }
                 }
             }
+        } else {
+            searchPlaceLable.text = "목적지를 입력하세요!"
+            searchPlaceLable.font = .h2
+            searchPlaceLable.textColor = .g1
+            searchCountLable.isHidden = true
+            searchAddress = nil
+            tableView.reloadData()
         }
     }
 }
@@ -210,13 +259,17 @@ extension HomeView : UISearchResultsUpdating {
 extension HomeView : UISearchControllerDelegate {
     func willPresentSearchController(_ searchController: UISearchController) {
         tableView.isHidden = false
+        searchPlaceLable.isHidden = false
         searchResultLable.isHidden = false
+        searchCountLable.isHidden = false
         mainMapView.isHidden = true
     }
     
     func willDismissSearchController(_ searchController: UISearchController) {
         tableView.isHidden = true
+        searchPlaceLable.isHidden = true
         searchResultLable.isHidden = true
+        searchCountLable.isHidden = true
         mainMapView.isHidden = false
     }
     
