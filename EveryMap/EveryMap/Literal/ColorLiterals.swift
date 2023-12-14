@@ -21,6 +21,10 @@ extension UIColor {
         return UIColor(hex: "DDDDDD")
     }
     
+    static var g3: UIColor {
+        return UIColor(hex: "A4A4A4")
+    }
+    
 }
 
 extension UIColor {

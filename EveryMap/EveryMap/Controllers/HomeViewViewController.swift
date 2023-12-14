@@ -40,8 +40,6 @@ class HomeViewViewController{
         
         dispatchGroup.notify(queue: .main) {
             self.searchModel = SearchModel(addressmodel: self.address ?? NMapAddressSearchModel(status: nil, meta: nil, addresses: nil, errorMessage: nil), placemodel: self.place ?? SearchPlaceModel(lastBuildDate: "", total: 0, start: 0, display: 0, items: []))
-            print("HomeViewViewController - Search :\(destanation), SearchAddress : \(self.address), SearchPlace : \(self.place)")
-            print("notify: \(destanation), \(self.place)")
             completion(self.searchModel)
         }
     }
