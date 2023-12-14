@@ -10,7 +10,8 @@ import NMapsMap
 
 class ResultMapView: UIViewController, UISearchBarDelegate {
     
-    var addressmodel : Address?
+    var searchAddress : Address?
+    var searchPlace : Item?
     var currentAddress : String?
     var startLocation : StartLocationModel?
     
@@ -21,7 +22,7 @@ class ResultMapView: UIViewController, UISearchBarDelegate {
         label.leftPadding = 25
         label.bottomPadding = 10
         label.font = .systemFont(ofSize: 15)
-        label.backgroundColor = .lightGray
+        label.backgroundColor = .g1
         label.layer.cornerRadius = 15
         label.layer.masksToBounds = true
         return label
@@ -39,7 +40,7 @@ class ResultMapView: UIViewController, UISearchBarDelegate {
     let completeBtn : UIButton = {
        let btn = UIButton()
         var config = UIButton.Configuration.filled()
-        config.baseBackgroundColor = #colorLiteral(red: 0.1647058824, green: 0.6, blue: 1, alpha: 1)
+        config.baseBackgroundColor = .b1
         config.cornerStyle = .dynamic
         config.buttonSize = .large
         btn.configuration = config
@@ -47,7 +48,7 @@ class ResultMapView: UIViewController, UISearchBarDelegate {
         btn.layer.shadowOffset = CGSize(width: 3, height: 3)
         btn.layer.shadowOpacity = 0.3
         btn.setAttributedTitle(NSAttributedString(string: "이 장소가 맞나요? 가장 빠른 경로 확인하기!",
-                                                  attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18)]), for: .normal)
+                                                  attributes: [NSAttributedString.Key.font : UIFont.b4]), for: .normal)
         return btn
     }()
 
@@ -58,6 +59,8 @@ class ResultMapView: UIViewController, UISearchBarDelegate {
     }
 }
 
+// MARK: - UI & Layout
+
 extension ResultMapView {
     func setUI() {
         self.view.backgroundColor = .systemBackground
@@ -66,7 +69,15 @@ extension ResultMapView {
         self.tabBarController?.tabBar.isHidden = true
         
         self.view.addSubviews(destination, mainMapView, completeBtn)
-        destination.text = addressmodel?.roadAddress
+        if let address = searchAddress {
+            print("ResultMapView - Address called")
+            destination.text = address.roadAddress
+        } else {
+            if let address = searchPlace {
+                print("ResultMapView - Place called")
+                destination.text = address.title.clearStr()
+            }
+        }
         
         completeBtn.addTarget(self, action: #selector(pushCompareView), for: .touchUpInside)
         
@@ -90,24 +101,52 @@ extension ResultMapView {
     
     func setMapview(){
         print("ResultMapView - setMapview() called")
-        let lat = Double(self.addressmodel?.y ?? "0.0")
-        let lng = Double(self.addressmodel?.x ?? "0.0")
-        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: lat ?? 0.0, lng: lng ?? 0.0), zoomTo: 14)
-        self.mainMapView.mapView.moveCamera(cameraUpdate)
-        
-        let marker = NMFMarker()
-        marker.position = NMGLatLng(lat: lat ?? 0.0, lng: lng ?? 0.0)
-        marker.mapView = mainMapView.mapView
+        if let address = searchAddress {
+            let lat = Double(address.y)
+            let lng = Double(address.x)
+            cameraUpdate(lat: lat ?? 0.0, lng: lng ?? 0.0)
+            markerUpdate(lat: lat ?? 0.0, lng: lng ?? 0.0)
+        } else {
+            if let address = searchPlace {
+                var mapx = String(Int(Double(address.mapx)!)).map{ String($0) }
+                var mapy = String(Int(Double(address.mapy)!)).map{ String($0) }
+                mapx.insert(".", at: 3)
+                mapy.insert(".", at: 2)
+                let lat = Double(mapy.joined())
+                let lng = Double(mapx.joined())
+                cameraUpdate(lat: lat ?? 0.0, lng: lng ?? 0.0)
+                markerUpdate(lat: lat ?? 0.0, lng: lng ?? 0.0)
+            }
+        }
     }
     
+    
+}
+
+// MARK: - Methods
+
+extension ResultMapView {
     @objc private func pushCompareView() {
-        let vc = CompareView()
-        vc.addressmodel = addressmodel
-        vc.currentAddress = currentAddress
-        vc.startLocation = startLocation
-        self.navigationController?.pushViewController(vc, animated: true)
+//        let vc = CompareView()
+//        vc.addressmodel = addressmodel
+//        vc.currentAddress = currentAddress
+//        vc.startLocation = startLocation
+//        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func cameraUpdate(lat: Double, lng: Double) {
+        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: lat, lng: lng), zoomTo: 14)
+        self.mainMapView.mapView.moveCamera(cameraUpdate)
+    }
+    
+    func markerUpdate(lat: Double, lng: Double) {
+        let marker = NMFMarker()
+        marker.position = NMGLatLng(lat: lat, lng: lng)
+        marker.mapView = mainMapView.mapView
     }
 }
+
+// MARK: - ViewWillAppear
 
 extension ResultMapView {
     override func viewWillAppear(_ animated: Bool) {

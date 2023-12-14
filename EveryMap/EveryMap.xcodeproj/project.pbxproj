@@ -24,8 +24,8 @@
 		1DF24EB22B27FCCE0020D30C /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF24EB12B27FCCE0020D30C /* APIManager.swift */; };
 		7107A3E72B283E520070B87B /* GuidanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3E62B283E520070B87B /* GuidanceView.swift */; };
 		7107A3F02B2840590070B87B /* HomeViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7107A3EF2B2840590070B87B /* HomeViewTableViewCell.swift */; };
+		711672712B2B1BB400758883 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711672702B2B1BB400758883 /* SearchModel.swift */; };
 		714B74232B20C89F00326AEC /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B74222B20C89F00326AEC /* Extensions.swift */; };
-		7152AC312B299F5900E3EE7E /* NMapAddressSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152AC302B299F5900E3EE7E /* NMapAddressSearchModel.swift */; };
 		71B3DDE62B21722C00F58CE4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDE52B21722C00F58CE4 /* HomeView.swift */; };
 		71B3DDE82B2172B900F58CE4 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDE72B2172B900F58CE4 /* SettingView.swift */; };
 		71B3DDEA2B217B9600F58CE4 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B3DDE92B217B9600F58CE4 /* Enums.swift */; };
@@ -86,8 +86,8 @@
 		6A01C15D2F2500C3C89E118C /* Pods-EveryMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EveryMap.debug.xcconfig"; path = "Target Support Files/Pods-EveryMap/Pods-EveryMap.debug.xcconfig"; sourceTree = "<group>"; };
 		7107A3E62B283E520070B87B /* GuidanceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidanceView.swift; sourceTree = "<group>"; };
 		7107A3EF2B2840590070B87B /* HomeViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewTableViewCell.swift; sourceTree = "<group>"; };
+		711672702B2B1BB400758883 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		714B74222B20C89F00326AEC /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		7152AC302B299F5900E3EE7E /* NMapAddressSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMapAddressSearchModel.swift; sourceTree = "<group>"; };
 		71B3DDE52B21722C00F58CE4 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		71B3DDE72B2172B900F58CE4 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		71B3DDE92B217B9600F58CE4 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -150,10 +150,10 @@
 			children = (
 				1DF24EAE2B27F8990020D30C /* NMapRouteModel.swift */,
 				1DF24EAD2B27F8990020D30C /* TMapRouteModel.swift */,
-				7152AC302B299F5900E3EE7E /* NMapAddressSearchModel.swift */,
 				1D92A7CC2B2AA3E100FD11FF /* RouteDataModel.swift */,
 				71D6551C2B2AC65700FE4B78 /* ReverseGeoModel.swift */,
 				71D6551E2B2AD25A00FE4B78 /* StartLocationModel.swift */,
+				711672702B2B1BB400758883 /* SearchModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -476,12 +476,12 @@
 				1D92A7CD2B2AA3E100FD11FF /* RouteDataModel.swift in Sources */,
 				71B3DDE82B2172B900F58CE4 /* SettingView.swift in Sources */,
 				71B3DDEA2B217B9600F58CE4 /* Enums.swift in Sources */,
-				7152AC312B299F5900E3EE7E /* NMapAddressSearchModel.swift in Sources */,
 				71EB13DB2B206DFB00728077 /* SceneDelegate.swift in Sources */,
 				71B3DDF22B219B6200F58CE4 /* MainTabBarViewViewController.swift in Sources */,
 				1D7F7B112B26E60A008DEFE8 /* ResultMapViewViewController.swift in Sources */,
 				1D7F7B0D2B26E5CD008DEFE8 /* SearchResultViewViewController.swift in Sources */,
 				1DC374872B2756AB00D9214C /* PaddingLabel.swift in Sources */,
+				711672712B2B1BB400758883 /* SearchModel.swift in Sources */,
 				71D6551D2B2AC65700FE4B78 /* ReverseGeoModel.swift in Sources */,
 				1D7F7B1C2B272A8C008DEFE8 /* SettingViewTableViewCell.swift in Sources */,
 				714B74232B20C89F00326AEC /* Extensions.swift in Sources */,
@@ -631,7 +631,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3D57ZF2MPX;
+				DEVELOPMENT_TEAM = J3XZ67KDFK;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -667,7 +667,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3D57ZF2MPX;
+				DEVELOPMENT_TEAM = J3XZ67KDFK;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

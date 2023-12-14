@@ -108,7 +108,7 @@ final class APIManager {
     }
     
     // MARK: - 주소 검색 API
-    func loadSearchResult(goalAddress : String, completion: @escaping (NMapAddressSearchModel?) -> Void) {
+    func loadSearchAddressResult(goalAddress : String, completion: @escaping (NMapAddressSearchModel?) -> Void) {
         var addressdata : NMapAddressSearchModel?
         
         let sessionConfig = URLSessionConfiguration.default
@@ -146,6 +146,55 @@ final class APIManager {
         task.resume()
         session.finishTasksAndInvalidate()
     }
+    
+    // MARK: - 지역 검색 API
+    func loadSearchPlaceResult(placeAddress : String, completion: @escaping (SearchPlaceModel?) -> Void) {
+        var placedata : SearchPlaceModel?
+        
+        let sessionConfig = URLSessionConfiguration.default
+        
+        /* Create session, and optionally set a URLSessionDelegate. */
+        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+        
+        guard var URL = URL(string: "https://openapi.naver.com/v1/search/local.json") else { 
+            print("URL 에러 발생")
+            completion(nil)
+            return }
+        let URLParams = [
+            "query": placeAddress,
+            "display": "5",
+            "sort": "random",
+        ]
+        URL = URL.appendingQueryParameters(URLParams)
+        var request = URLRequest(url: URL)
+        request.httpMethod = "GET"
+        
+        // Headers
+        guard let nmapClientId = Bundle.main.NaversearchClientId, let nmapClientSecret = Bundle.main.NaversearchClientSecret else { 
+            print("id, secret 에러 발생")
+            completion(nil)
+            return }
+        request.addValue(nmapClientId, forHTTPHeaderField: "X-Naver-Client-Id")
+        request.addValue(nmapClientSecret, forHTTPHeaderField: "X-Naver-Client-Secret")
+        
+        /* Start a new Task */
+        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+            guard let data = data, error == nil else {
+                print("에러발생.")
+                return
+            }
+            do {
+                let result = try JSONDecoder().decode(SearchPlaceModel.self, from: data)
+                placedata = result
+                completion(placedata)
+            } catch {
+                print("JSON 디코딩 에러 : \(error)")
+            }
+        }
+        task.resume()
+        session.finishTasksAndInvalidate()
+    }
+    
     // MARK: - 좌표값 기준 주소명 검색 API
     func loadAddressResult(lat: Double, lng: Double, completion: @escaping (Region?) -> Void) {
         var region : Region?
@@ -155,7 +204,10 @@ final class APIManager {
         /* Create session, and optionally set a URLSessionDelegate. */
         let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
         
-        guard var URL = URL(string: "https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2/gc") else { return }
+        guard var URL = URL(string: "https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2/gc") else { 
+            print("URL 에러 발생")
+            completion(nil)
+            return }
         let URLParams = [
             "coords": "\(lng),\(lat)",
             "output": "json",

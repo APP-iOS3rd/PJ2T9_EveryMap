@@ -13,10 +13,12 @@ class HomeView: UIViewController {
     
     private let searchController = UISearchController(searchResultsController: nil)
     private let apiManager = APIManager.manager
-    private var searchAddress : NMapAddressSearchModel?
     private var region : Region?
     private var currentAddress : String?
     private var startLocation : StartLocationModel?
+    private var homeViewViewController = HomeViewViewController()
+    //테스트용
+    private var searchModel : SearchModel?
     
     let mainMapView : NMFNaverMapView = {
         let naverMapView = NMFNaverMapView()
@@ -165,14 +167,15 @@ extension HomeView {
 
 extension HomeView : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let search = searchAddress else { return 0 }
-        return search.meta?.totalCount ?? 0
+        guard let search = searchModel else { return 0 }
+        return search.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeViewTableViewCell.cellId, for: indexPath) as! HomeViewTableViewCell
         cell.backgroundColor = .white
-        cell.placeLabel.text = searchAddress?.addresses?[indexPath.row].roadAddress
+        cell.placeLabel.text = searchModel?.list[indexPath.row]
+        
         return cell
     }
 }
@@ -183,13 +186,17 @@ extension HomeView : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // cell 선택했을 때 수행할 동작 여기서 구현하면 됨
         tableView.deselectRow(at: indexPath, animated: true)
-        
+        // 현재
         currentAddress = [region?.area1.name, region?.area2.name, region?.area3.name]
             .reduce("") { (result, areaName) in
                 return result + " " + (areaName ?? "")
             }
         let vc = ResultMapView()
-        vc.addressmodel = searchAddress?.addresses?[indexPath.row]
+        if indexPath.row >= searchModel?.addressmodel?.meta?.totalCount ?? 0 {
+            vc.searchPlace = searchModel?.placemodel?.items[indexPath.row]
+        } else {
+            vc.searchAddress = searchModel?.addressmodel?.addresses?[indexPath.row]
+        }
         vc.currentAddress = currentAddress?.trimmingCharacters(in: .whitespaces)
         vc.startLocation = startLocation
         self.navigationController?.pushViewController(vc, animated: true)
@@ -222,15 +229,14 @@ extension HomeView : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else { return }
         if text != "" {
-            apiManager.loadSearchResult(goalAddress: text) { [weak self] result in
+            homeViewViewController.loadModelData(destanation: text) { [weak self] result in
                 DispatchQueue.main.async {
                     if let result = result {
-                        // API 응답 도착 시 주소 검색 결과 모델 업데이트
-                        self?.searchAddress = result
-                        print("Search Address Count: \(self?.searchAddress?.meta?.totalCount ?? 0)")
-                        if self?.searchAddress?.meta?.totalCount ?? 0 > 0 {
+                        self?.searchModel = result
+                        print("Search Model : \(self?.searchModel?.count)")
+                        if self?.searchModel?.count ?? 0 > 0 {
                             self?.searchCountLable.isHidden = false
-                            self?.searchCountLable.text = "총 \(self?.searchAddress?.meta?.totalCount ?? 0)개 장소를 발견했어요!"
+                            self?.searchCountLable.text = "총 \(self?.searchModel?.count ?? 0)개 장소를 발견했어요!"
                         } else {
                             self?.searchCountLable.isHidden = true
                         }
@@ -238,7 +244,8 @@ extension HomeView : UISearchResultsUpdating {
                         self?.searchPlaceLable.text = "\"" + text + "\""
                         self?.searchPlaceLable.font = .h3
                         self?.searchPlaceLable.textColor = .black
-                    } else {
+                    }
+                    else {
                         print("결과가 없습니다.")
                     }
                 }
@@ -248,7 +255,7 @@ extension HomeView : UISearchResultsUpdating {
             searchPlaceLable.font = .h2
             searchPlaceLable.textColor = .g1
             searchCountLable.isHidden = true
-            searchAddress = nil
+            searchModel = nil
             tableView.reloadData()
         }
     }
