@@ -24,9 +24,14 @@ class CompareViewViewController {
             print("All API requests completed!")
             // 여기에서 필요한 작업 수행
             // 예: UI 업데이트, 결과 처리 등
+            compareView.routeDataTableView.reloadData()
         }
     }
     
+ 
+}
+
+extension CompareViewViewController {
     private func loadRouteData(startX: CLLocationDegrees, startY: CLLocationDegrees, endX: CLLocationDegrees, endY: CLLocationDegrees, completion: @escaping () -> Void) {
         let dispatchGroup = DispatchGroup()
         
@@ -70,8 +75,9 @@ class CompareViewViewController {
             completion()
         }
     }
-    
+}
 
+extension CompareViewViewController {
     func getAMPMString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "a"
@@ -88,5 +94,15 @@ class CompareViewViewController {
         let formattedCurrentTime = dateFormatter.string(from: currentTime)
         
         return formattedCurrentTime
+    }
+}
+
+extension CompareViewViewController {
+    func getData() -> [RouteDataModel] {
+        return routeData
+    }
+        
+    func getIndexData(index: Int) -> RouteDataModel {
+        return routeData[index]
     }
 }
