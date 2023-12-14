@@ -193,7 +193,12 @@ extension HomeView : UITableViewDelegate {
             }
         let vc = ResultMapView()
         if indexPath.row >= searchModel?.addressmodel?.meta?.totalCount ?? 0 {
-            vc.searchPlace = searchModel?.placemodel?.items[indexPath.row]
+            let addressCount = searchModel?.addressmodel?.meta?.totalCount
+            if addressCount == 0 {
+                vc.searchPlace = searchModel?.placemodel?.items[indexPath.row]
+            } else {
+                vc.searchPlace = searchModel?.placemodel?.items[indexPath.row - addressCount!]
+            }
         } else {
             vc.searchAddress = searchModel?.addressmodel?.addresses?[indexPath.row]
         }
