@@ -40,7 +40,7 @@ extension Bundle {
     var NaversearchClientId : String? {
         guard let file = self.path(forResource: "APIKEY-Info", ofType: "plist"),
               let resource = NSDictionary(contentsOfFile: file),
-              let key = resource["Naversearch-clientId"] as? String else { return nil }
+              let key = resource["Naversearch-clientid"] as? String else { return nil }
         return key
     }
     
@@ -104,3 +104,8 @@ extension URL {
     }
 }
 
+extension String {
+    func clearStr() -> String {
+        return self.replacingOccurrences(of: "[\\<b>\\</b>\\&amp;]", with: "", options: .regularExpression)
+    }
+}
