@@ -10,7 +10,9 @@ import NMapsMap
 
 class ResultMapView: UIViewController, UISearchBarDelegate {
     
-    var address : Address?
+    var addressmodel : Address?
+    var currentAddress : String?
+    var startLocation : StartLocationModel?
     
     let destination : PaddingLabel = {
         let label = PaddingLabel()
@@ -21,8 +23,6 @@ class ResultMapView: UIViewController, UISearchBarDelegate {
         label.font = .systemFont(ofSize: 15)
         label.backgroundColor = .lightGray
         label.layer.cornerRadius = 15
-//        label.layer.shadowOpacity = 0.3
-//        label.layer.shadowOffset = CGSize(width: 3, height: 3)
         label.layer.masksToBounds = true
         return label
     }()
@@ -46,12 +46,8 @@ class ResultMapView: UIViewController, UISearchBarDelegate {
         btn.layer.shadowRadius = 5
         btn.layer.shadowOffset = CGSize(width: 3, height: 3)
         btn.layer.shadowOpacity = 0.3
-//        btn.backgroundColor = #colorLiteral(red: 0.1647058824, green: 0.6, blue: 1, alpha: 1)
         btn.setAttributedTitle(NSAttributedString(string: "이 장소가 맞나요? 가장 빠른 경로 확인하기!",
                                                   attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18)]), for: .normal)
-//        btn.layoutMargins = UIEdgeInsets(top: 40, left: 40, bottom: 40, right: 40)
-//        btn.setTitleColor(.white, for: .normal)
-//        btn.layer.cornerRadius = 8
         return btn
     }()
 
@@ -70,12 +66,12 @@ extension ResultMapView {
         self.tabBarController?.tabBar.isHidden = true
         
         self.view.addSubviews(destination, mainMapView, completeBtn)
-        destination.text = address?.roadAddress
+        destination.text = addressmodel?.roadAddress
         
         
         NSLayoutConstraint.activate([
             destination.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            destination.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            destination.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: -15),
             destination.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             destination.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
             
@@ -93,8 +89,8 @@ extension ResultMapView {
     
     func setMapview(){
         print("ResultMapView - setMapview() called")
-        let lat = Double(self.address?.y ?? "0.0")
-        let lng = Double(self.address?.x ?? "0.0")
+        let lat = Double(self.addressmodel?.y ?? "0.0")
+        let lng = Double(self.addressmodel?.x ?? "0.0")
         let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: lat ?? 0.0, lng: lng ?? 0.0), zoomTo: 14)
         self.mainMapView.mapView.moveCamera(cameraUpdate)
         

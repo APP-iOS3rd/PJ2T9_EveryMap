@@ -14,6 +14,9 @@ class HomeView: UIViewController {
     private let searchController = UISearchController(searchResultsController: nil)
     private let apiManager = APIManager.manager
     private var searchAddress : NMapAddressSearchModel?
+    private var region : Region?
+    private var currentAddress : String?
+    private var startLocation : StartLocationModel?
     
     let mainMapView : NMFNaverMapView = {
         let naverMapView = NMFNaverMapView()
@@ -44,8 +47,6 @@ class HomeView: UIViewController {
         return label
     }()
     
-    var testArr : [String] = ["인천국제공항", "학동평화맨션", "서울역"]
-//    let homeviewController = HomeViewViewController()
     var locationManager = CLLocationManager()
     
     convenience init(title: String) {
@@ -142,8 +143,15 @@ extension HomeView : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // cell 선택했을 때 수행할 동작 여기서 구현하면 됨
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        currentAddress = [region?.area1.name, region?.area2.name, region?.area3.name]
+            .reduce("") { (result, areaName) in
+                return result + " " + (areaName ?? "")
+            }
         let vc = ResultMapView()
-        vc.address = searchAddress?.addresses?[indexPath.row]
+        vc.addressmodel = searchAddress?.addresses?[indexPath.row]
+        vc.currentAddress = currentAddress?.trimmingCharacters(in: .whitespaces)
+        vc.startLocation = startLocation
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -169,7 +177,17 @@ extension HomeView {
             print("위도 : \(location.coordinate.latitude), 경도 : \(location.coordinate.longitude)")
             let lat = location.coordinate.latitude
             let lng = location.coordinate.longitude
-            
+            apiManager.loadAddressResult(lat: lat, lng: lng) { [weak self] result in
+                DispatchQueue.main.async {
+                    if let result = result {
+                        // API 응답 도착 시 주소 검색 결과 모델 업데이트
+                        self?.region = result
+                    } else {
+                        print("결과가 없습니다.")
+                    }
+                }
+            }
+            startLocation = StartLocationModel(lat: lat, lng: lng)
             let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: lat ?? 0.0, lng: lng ?? 0.0), zoomTo: 15)
             
             self.mainMapView.mapView.moveCamera(cameraUpdate)
