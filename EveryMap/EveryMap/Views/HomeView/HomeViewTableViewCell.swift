@@ -14,10 +14,7 @@ class HomeViewTableViewCell: UITableViewCell {
     let placeLabel : PaddingLabel = {
         let label = PaddingLabel()
         label.textColor = .black
-        label.font = .boldSystemFont(ofSize: 16)
-        label.topPadding = 15
-        label.bottomPadding = 15
-        label.leftPadding = 15
+        label.font = .b3
         return label
     }()
     
@@ -25,6 +22,14 @@ class HomeViewTableViewCell: UITableViewCell {
         let imgView = UIImageView()
         imgView.image = UIImage(systemName: "magnifyingglass.circle")
         return imgView
+    }()
+    
+    let addressLabel : PaddingLabel = {
+        let label = PaddingLabel()
+        label.textColor = .g3
+        label.font = .b5
+        label.textAlignment = .left
+        return label
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -48,18 +53,20 @@ class HomeViewTableViewCell: UITableViewCell {
     }
 
     func setLayout() {
-        self.addSubviews(placeImg, placeLabel)
+        self.addSubviews(placeImg, addressLabel, placeLabel)
         
         NSLayoutConstraint.activate([
             placeImg.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25),
             placeImg.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
             placeImg.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5),
-            placeImg.widthAnchor.constraint(equalToConstant: 30),
-            placeImg.heightAnchor.constraint(equalToConstant: 30),
+            placeImg.widthAnchor.constraint(equalToConstant: 40),
+            placeImg.heightAnchor.constraint(equalToConstant: 40),
             
-            placeLabel.leadingAnchor.constraint(equalTo: placeImg.trailingAnchor),
-            placeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 10),
-            placeLabel.centerYAnchor.constraint(equalTo: placeImg.centerYAnchor)
+            placeLabel.leadingAnchor.constraint(equalTo: placeImg.trailingAnchor, constant: 5),
+            placeLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
+            
+            addressLabel.firstBaselineAnchor.constraint(equalTo: placeImg.firstBaselineAnchor),
+            addressLabel.leadingAnchor.constraint(equalTo: placeLabel.leadingAnchor),
         ])
     }
 }

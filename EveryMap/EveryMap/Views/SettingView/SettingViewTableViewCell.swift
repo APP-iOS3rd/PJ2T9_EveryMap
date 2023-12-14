@@ -40,8 +40,7 @@ class SettingViewTableViewCell: UITableViewCell {
         itemLabel.bottomPadding = 15
         itemLabel.leftPadding = 25
         
-        itemSubLabel.textColor = .black
-        itemSubLabel.layer.opacity = 0.35
+        itemSubLabel.textColor = .g3
         itemSubLabel.font = .b2
         itemSubLabel.topPadding = 15
         itemSubLabel.bottomPadding = 15

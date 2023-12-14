@@ -16,8 +16,7 @@ class HomeView: UIViewController {
     private var region : Region?
     private var currentAddress : String?
     private var startLocation : StartLocationModel?
-    private var homeViewViewController = HomeViewViewController()
-    //테스트용
+    private let homeViewViewController = HomeViewViewController()
     private var searchModel : SearchModel?
     
     let mainMapView : NMFNaverMapView = {
@@ -42,7 +41,7 @@ class HomeView: UIViewController {
         label.leftPadding = 25
         label.bottomPadding = 10
         label.font = .h2
-        label.textColor = .g1
+        label.textColor = .g3
         label.textAlignment = .left
         label.isHidden = true
         return label
@@ -176,7 +175,27 @@ extension HomeView : UITableViewDataSource {
         cell.backgroundColor = .white
         cell.placeLabel.text = searchModel?.list[indexPath.row]
         
+        updateAddressAsync(for: cell, at: indexPath)
+        
         return cell
+    }
+    
+    func updateAddressAsync(for cell: HomeViewTableViewCell, at indexPath: IndexPath) {
+        DispatchQueue.global().async {
+            let addressCount = self.searchModel?.addressmodel?.meta?.totalCount ?? 0
+            if indexPath.row >= addressCount {
+                if addressCount != 0 {
+                    let roadAddress = self.searchModel?.placemodel?.items[indexPath.row - addressCount].roadAddress
+                    DispatchQueue.main.async {
+                        cell.addressLabel.text = roadAddress
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        cell.addressLabel.text = ""
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -235,20 +254,20 @@ extension HomeView : UISearchResultsUpdating {
         guard let text = searchController.searchBar.text else { return }
         if text != "" {
             homeViewViewController.loadModelData(destanation: text) { [weak self] result in
+                guard let self = self else { return }
                 DispatchQueue.main.async {
                     if let result = result {
-                        self?.searchModel = result
-                        print("Search Model : \(self?.searchModel?.count)")
-                        if self?.searchModel?.count ?? 0 > 0 {
-                            self?.searchCountLable.isHidden = false
-                            self?.searchCountLable.text = "총 \(self?.searchModel?.count ?? 0)개 장소를 발견했어요!"
+                        self.searchModel = result
+                        if self.searchModel?.count ?? 0 > 0 {
+                            self.searchCountLable.isHidden = false
+                            self.searchCountLable.text = "총 \(self.searchModel?.count ?? 0)개 장소를 발견했어요!"
                         } else {
-                            self?.searchCountLable.isHidden = true
+                            self.searchCountLable.isHidden = true
                         }
-                        self?.tableView.reloadData()
-                        self?.searchPlaceLable.text = "\"" + text + "\""
-                        self?.searchPlaceLable.font = .h3
-                        self?.searchPlaceLable.textColor = .black
+                        self.tableView.reloadData()
+                        self.searchPlaceLable.text = "\"" + text + "\""
+                        self.searchPlaceLable.font = .h3
+                        self.searchPlaceLable.textColor = .black
                     }
                     else {
                         print("결과가 없습니다.")
@@ -318,4 +337,6 @@ extension HomeView {
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = false
     }
+    
+    
 }
