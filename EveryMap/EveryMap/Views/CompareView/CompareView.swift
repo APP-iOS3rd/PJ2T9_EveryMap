@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class CompareView: UIViewController {
 
@@ -50,7 +51,7 @@ class CompareView: UIViewController {
         return label
     }()
     
-    private let routeOptionButton: UIButton = {
+    private var routeOptionButton: UIButton = {
         let btn = UIButton()
         btn.titleLabel?.adjustsFontForContentSizeCategory = true
         btn.setTitle("전체", for: .normal)
@@ -69,22 +70,29 @@ class CompareView: UIViewController {
         return tableView
     }()
     
-    let listChange: (UIButton, String) -> Void = {(btn: UIButton, title: String) in
+    let showKakaoBtn = {
+        let btn = UIButton()
+         var config = UIButton.Configuration.filled()
+         config.baseBackgroundColor = #colorLiteral(red: 0.1647058824, green: 0.6, blue: 1, alpha: 1)
+         config.cornerStyle = .dynamic
+         config.buttonSize = .large
+         btn.configuration = config
+         btn.layer.shadowRadius = 5
+         btn.layer.shadowOffset = CGSize(width: 3, height: 3)
+         btn.layer.shadowOpacity = 0.3
+         btn.setAttributedTitle(NSAttributedString(string: "카카오내비 결과 확인하기!",
+                                                   attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18)]), for: .normal)
+         return btn
+    }()
+    
+    let listChange: (UIButton, String, UITableView) -> Void = {(btn: UIButton, title: String, routeDataTableView: UITableView) in
  
-        if title == "전체" {
-            btn.setTitle(title, for: .normal)
-            
-        } else if title == "추천순" {
-            btn.setTitle(title, for: .normal)
-
-        } else if title == "최단 시간순" {
-            btn.setTitle(title, for: .normal)
-
-        } else { // 무료순
-            btn.setTitle(title, for: .normal)
-            
-        }
-        
+        if title == "전체" { btn.setTitle(title, for: .normal) } 
+        else if title == "추천순" { btn.setTitle(title, for: .normal) }
+        else if title == "최단 시간순" { btn.setTitle(title, for: .normal) }
+        else { btn.setTitle(title, for: .normal) } // 무료순
+    
+        routeDataTableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -98,27 +106,27 @@ class CompareView: UIViewController {
         routeDataTableView.delegate = self
         
         setUI(currentAddress: currentAddress, destinationAddress: end.roadAddress)
-        
+        showKakaoBtn.addTarget(self, action: #selector(showKakaoNavi), for: .touchUpInside)
     }
 }
 
 extension CompareView {
     private func setUI(currentAddress: String, destinationAddress: String){
         self.view.backgroundColor = .white
-        self.view.addSubviews(currentLabel, destinationLabel, startTimeLabel, routeOptionButton, routeDataTableView)
+        self.view.addSubviews(currentLabel, destinationLabel, startTimeLabel, routeOptionButton, routeDataTableView, showKakaoBtn)
         
         routeOptionButton.menu = UIMenu(title: "목록", children: [
             UIAction(title: "전체"){ _ in
-                self.listChange(self.routeOptionButton, "전체")
+                self.listChange(self.routeOptionButton, "전체", self.routeDataTableView)
             },
             UIAction(title: "추천순") { _ in
-                self.listChange(self.routeOptionButton, "추천순")
+                self.listChange(self.routeOptionButton, "추천순", self.routeDataTableView)
             },
             UIAction(title: "최단 시간순") { _ in
-                self.listChange(self.routeOptionButton, "최단 시간순")
+                self.listChange(self.routeOptionButton, "최단 시간순", self.routeDataTableView)
             },
             UIAction(title: "무료순") { _ in
-                self.listChange(self.routeOptionButton, "무료순")
+                self.listChange(self.routeOptionButton, "무료순", self.routeDataTableView)
             }
         ])
         routeOptionButton.showsMenuAsPrimaryAction = true
@@ -156,23 +164,51 @@ extension CompareView {
             routeDataTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             routeDataTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             routeDataTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            
+            showKakaoBtn.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            showKakaoBtn.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 30),
+            showKakaoBtn.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -30),
         ])
+    }
+}
+
+extension CompareView {
+    @objc private func showKakaoNavi() {
+        guard let compareviewVC = self.compareviewViewController, let start = self.startLocation, let end = self.addressmodel else {return}
+        compareviewVC.showKakaoMap(startX: start.lat, startY: start.lng, endX: Double(end.x)!, endY: Double(end.y)!)
     }
 }
 
 extension CompareView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return compareviewViewController?.getData().count ?? 0
+        switch self.routeOptionButton.titleLabel?.text {
+        case "추천순":
+            return compareviewViewController?.getOptimalDataCount() ?? 0
+        case "최단 시간순":
+            return compareviewViewController?.getFastDataCount() ?? 0
+        case "무료순":
+            return compareviewViewController?.getAvoidtallDataCount() ?? 0
+        default: return compareviewViewController?.getAllDataCount() ?? 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = routeDataTableView.dequeueReusableCell(withIdentifier: CompareViewTableViewCell.cellId, for: indexPath) as! CompareViewTableViewCell
         
         cell.backgroundColor = .systemBackground
+ 
+        guard let data = {
+            switch self.routeOptionButton.titleLabel?.text {
+            case "추천순": return self.compareviewViewController?.getIndexOptimalRouteData(index: indexPath.row)
+            case "최단 시간순": return self.compareviewViewController?.getIndexFastRouteData(index: indexPath.row)
+            case "무료순": return self.compareviewViewController?.getIndexAvoidtollRouteData(index: indexPath.row)
+            default: return self.compareviewViewController?.getIndexData(index: indexPath.row)
+            }
+        }() else {return cell}
         
-        guard let data = compareviewViewController?.getIndexData(index: indexPath.row) else {return cell}
+        
         cell.totalTimeLabel.text = data.totalTime
-        cell.futureTimeLabel.text = "\(compareviewViewController?.getAMPMString() == "AM" ? "오전" : "오후")" + " " + (data.futureTime)
+        cell.futureTimeLabel.text = "\(data.futureTime)"
     
         var option = ""
         switch data.searchOption {
@@ -195,10 +231,22 @@ extension CompareView: UITableViewDataSource {
         
         return cell
     }
-    
-    
 }
 
 extension CompareView: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let data = {
+            switch self.routeOptionButton.titleLabel?.text {
+            case "추천순": return self.compareviewViewController?.getIndexOptimalRouteData(index: indexPath.row)
+            case "최단 시간순": return self.compareviewViewController?.getIndexFastRouteData(index: indexPath.row)
+            case "무료순": return self.compareviewViewController?.getIndexAvoidtollRouteData(index: indexPath.row)
+            default: return self.compareviewViewController?.getIndexData(index: indexPath.row)
+            }
+        }() else {return}
+        
+        switch data.mapName {
+        case .NaverMap: self.compareviewViewController?.showNaverMap(startX: data.startX, startY: data.startY, endX: data.endX, endY: data.endY)
+        case .TMap: self.compareviewViewController?.showTMap(startX: data.startX, startY: data.startY, endX: data.endX, endY: data.endY)
+        }
+    }
 }

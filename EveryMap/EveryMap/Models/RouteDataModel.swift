@@ -44,15 +44,23 @@ class RouteDataModel {
     
     private static func calculateFutureTime(fromNow secondsToAdd: TimeInterval) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.dateFormat = "a h:mm"
         
         let currentTime = Date()
         let futureTime = currentTime.addingTimeInterval(secondsToAdd)
         
-        let formattedFutureTime = dateFormatter.string(from: futureTime)
+        var formattedFutureTime = dateFormatter.string(from: futureTime)
         
-        return "\(formattedFutureTime)분 도착예정"
+        // AM/PM을 오전/오후로 변경
+        if let range = formattedFutureTime.range(of: "AM") {
+            formattedFutureTime.replaceSubrange(range, with: "오전")
+        } else if let range = formattedFutureTime.range(of: "PM") {
+            formattedFutureTime.replaceSubrange(range, with: "오후")
+        }
+        
+        return "\(formattedFutureTime) 도착예정"
     }
+
     
     private static func formatNumberWithComma(_ number: NSNumber) -> String? {
         let numberFormatter = NumberFormatter()

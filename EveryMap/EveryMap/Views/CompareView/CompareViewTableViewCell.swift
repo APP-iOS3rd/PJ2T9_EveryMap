@@ -56,6 +56,7 @@ class CompareViewTableViewCell: UITableViewCell {
         
         mapNameLabel.textColor = .black
         mapNameLabel.font = .b2
+        mapNameLabel.textAlignment = .center
         
         addSubviews(totalTimeLabel, futureTimeLabel, mapImage, searchOptionLabel, distanceAndFareLabel, mapNameLabel)
         
