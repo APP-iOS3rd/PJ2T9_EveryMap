@@ -68,6 +68,7 @@ extension ResultMapView {
         self.view.addSubviews(destination, mainMapView, completeBtn)
         destination.text = addressmodel?.roadAddress
         
+        completeBtn.addTarget(self, action: #selector(pushCompareView), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             destination.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -98,6 +99,14 @@ extension ResultMapView {
         marker.position = NMGLatLng(lat: lat ?? 0.0, lng: lng ?? 0.0)
         marker.mapView = mainMapView.mapView
     }
+    
+    @objc private func pushCompareView() {
+        let vc = CompareView()
+        vc.addressmodel = addressmodel
+        vc.currentAddress = currentAddress
+        vc.startLocation = startLocation
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension ResultMapView {
@@ -106,4 +115,3 @@ extension ResultMapView {
         self.tabBarController?.tabBar.isHidden = true
     }
 }
-
