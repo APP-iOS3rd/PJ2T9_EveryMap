@@ -11,9 +11,9 @@ import Foundation
 
 // MARK: - NMapRoute
 struct NMapRoute: Codable {
-//    let code: Int
-//    let message: String
-//    let currentDateTime: String
+    //    let code: Int
+    //    let message: String
+    //    let currentDateTime: String
     let route: Route
 }
 
@@ -23,7 +23,19 @@ struct Route: Codable {
     let traoptimal: [Traoptimal]? //실시간 최적
     let traavoidtoll: [Traavoidtoll]? //무료 우선
     //    let tracomfort: [Tracomfort]? //실시간 편한길
-//    let traavoidcaronly: [Traavoidcaronly]? //자동차 전용도로 회피 우선
+    //    let traavoidcaronly: [Traavoidcaronly]? //자동차 전용도로 회피 우선
+    
+    var availableRoute: [Any]? {
+        if let trafast = trafast, !trafast.isEmpty {
+            return trafast
+        } else if let traoptimal = traoptimal, !traoptimal.isEmpty {
+            return traoptimal
+        } else if let traavoidtoll = traavoidtoll, !traavoidtoll.isEmpty {
+            return traavoidtoll
+        } else {
+            return nil
+        }
+    }
 }
 
 // MARK: - Trafast
