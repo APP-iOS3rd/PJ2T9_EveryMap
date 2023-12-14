@@ -28,17 +28,18 @@ class RouteDataModel {
         self.searchOption = searchOption
         self.totalDistance = "\(totalDistance/1000)km"
         
+        
         switch mapName {
         case .NaverMap:
             self.futureTime = RouteDataModel.calculateFutureTime(fromNow: Double(totalTime)/1000.0)
-            self.totalTime = "\(totalTime/1000/60/60)시간 \(totalTime/1000/60%60)분"
+            self.totalTime = "\(totalTime/1000/60/60 > 0 ? "\(totalTime/1000/60/60)시간" : "") \(totalTime/1000/60%60)분"
         case .TMap:
             self.futureTime = RouteDataModel.calculateFutureTime(fromNow: Double(totalTime))
-            self.totalTime = "\(totalTime/60/60)시간 \(totalTime/60%60)분"
+            self.totalTime = "\(totalTime/60/60 > 0 ? "\(totalTime/60/60)시간" : "") \(totalTime/60%60)분"
         }
         
-        self.totalFare = "\(String(describing: RouteDataModel.formatNumberWithComma(totalFare as NSNumber)))원"
-        self.taxiFare = "\(String(describing: RouteDataModel.formatNumberWithComma(taxiFare as NSNumber)))원"
+        self.totalFare = "\(String(describing: RouteDataModel.formatNumberWithComma(totalFare as NSNumber)!))원"
+        self.taxiFare = "\(String(describing: RouteDataModel.formatNumberWithComma(taxiFare as NSNumber)!))원"
     }
     
     private static func calculateFutureTime(fromNow secondsToAdd: TimeInterval) -> String {
@@ -50,7 +51,7 @@ class RouteDataModel {
         
         let formattedFutureTime = dateFormatter.string(from: futureTime)
         
-        return formattedFutureTime
+        return "\(formattedFutureTime)분 도착예정"
     }
     
     private static func formatNumberWithComma(_ number: NSNumber) -> String? {
