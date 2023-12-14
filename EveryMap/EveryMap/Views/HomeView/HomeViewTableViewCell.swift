@@ -17,7 +17,7 @@ class HomeViewTableViewCell: UITableViewCell {
         label.font = .boldSystemFont(ofSize: 16)
         label.topPadding = 15
         label.bottomPadding = 15
-        label.leftPadding = 25
+        label.leftPadding = 15
         return label
     }()
     
@@ -51,7 +51,7 @@ class HomeViewTableViewCell: UITableViewCell {
         self.addSubviews(placeImg, placeLabel)
         
         NSLayoutConstraint.activate([
-            placeImg.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            placeImg.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25),
             placeImg.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
             placeImg.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5),
             placeImg.widthAnchor.constraint(equalToConstant: 30),

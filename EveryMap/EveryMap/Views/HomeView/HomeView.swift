@@ -33,16 +33,42 @@ class HomeView: UIViewController {
         return view
     }()
     
-    private let lastSearchLable = {
-        var label = PaddingLabel()
-        label.text = "최근검색"
+    private let searchPlaceLable = {
+       var label = PaddingLabel()
+        label.text = "검색어를 입력하세요!"
         label.topPadding = 20
         label.leftPadding = 25
-        label.bottomPadding = 20
-        label.font = .boldSystemFont(ofSize: 32)
+        label.bottomPadding = 10
+        label.font = .h2
+        label.textColor = .g1
+        label.textAlignment = .left
+        label.isHidden = true
+        return label
+    }()
+    
+    private let searchResultLable = {
+        var label = PaddingLabel()
+        label.text = "검색 결과"
+        label.topPadding = 20
+        label.leftPadding = 10
+        label.font = .h2
         label.textColor = .black
         label.textAlignment = .left
-        label.backgroundColor = .white
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
+        label.isHidden = true
+        return label
+    }()
+    
+    private let searchCountLable = {
+        var label = PaddingLabel()
+        label.text = ""
+        label.topPadding = 10
+        label.leftPadding = 25
+        label.bottomPadding = 20
+        label.font = .s1
+        label.textColor = .black
+        label.textAlignment = .left
         label.isHidden = true
         return label
     }()
@@ -58,31 +84,28 @@ class HomeView: UIViewController {
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.isHidden = false
         setupHomeView()
+        setupSearchController()
+        startUpdatingUserLocation()
+        setupConstraints()
+        
     }
 }
 
-// MARK: - HomeView Function
+// MARK: - UI & Layout
+
 extension HomeView {
-    // MARK: - HomeView 화면 설정 함수
     func setupHomeView() {
         self.view.backgroundColor = .systemBackground
-        setUpSearchController()
-        self.view.addSubviews(mainMapView,lastSearchLable,tableView)
+        self.view.addSubviews(mainMapView, searchPlaceLable, searchResultLable, searchCountLable,  tableView)
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         
-        startUpdatingUserLocation()
-        
         self.tableView.register(HomeViewTableViewCell.self, forCellReuseIdentifier: HomeViewTableViewCell.cellId)
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        
-        setupConstraints()
     }
     
-    
-    // MARK: - HomeView 화면에 있는 Constraints 설정 함수
     func setupConstraints() {
         // 임시로 TMapView로 표현함
         NSLayoutConstraint.activate([
@@ -91,18 +114,25 @@ extension HomeView {
             mainMapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             mainMapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             
-            lastSearchLable.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            lastSearchLable.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            lastSearchLable.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            searchPlaceLable.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            searchPlaceLable.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             
-            tableView.topAnchor.constraint(equalTo: self.lastSearchLable.bottomAnchor),
+            searchResultLable.leadingAnchor.constraint(equalTo: self.searchPlaceLable.trailingAnchor),
+            searchResultLable.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            searchResultLable.firstBaselineAnchor.constraint(equalTo: searchPlaceLable.firstBaselineAnchor),
+            
+            searchCountLable.topAnchor.constraint(equalTo: self.searchPlaceLable.bottomAnchor),
+            searchCountLable.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            searchCountLable.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            
+            tableView.topAnchor.constraint(equalTo: self.searchCountLable.bottomAnchor),
             tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
     }
-    // MARK: - HomeView - SearchController 설정 함수
-    func setUpSearchController() {
+    
+    func setupSearchController() {
         self.searchController.delegate = self
         // searchConroller에 UISearchResultsUpdating 프로토콜을 사용하기 위해서
         self.searchController.searchResultsUpdater = self
@@ -121,10 +151,18 @@ extension HomeView {
         self.definesPresentationContext = true
     }
     
+    func setupMapView() {
+        let lat = startLocation?.lat
+        let lng = startLocation?.lng
+        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: lat ?? 0.0, lng: lng ?? 0.0), zoomTo: 15)
+        
+        self.mainMapView.mapView.moveCamera(cameraUpdate)
+    }
     
 }
 
-// MARK: - HomeView - TableView
+// MARK: - UITableViewDataSource
+
 extension HomeView : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let search = searchAddress else { return 0 }
@@ -138,6 +176,8 @@ extension HomeView : UITableViewDataSource {
         return cell
     }
 }
+
+// MARK: - UITableViewDelegate
 
 extension HomeView : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -156,21 +196,88 @@ extension HomeView : UITableViewDelegate {
     }
 }
 
-// MARK: - 지도 관련 Methods
+// MARK: - CoreLocation
+
 extension HomeView {
-    // MARK: - HomeView 현재 위치 버튼 함수
     func startUpdatingUserLocation() {
         DispatchQueue.global().async {
             if CLLocationManager.locationServicesEnabled() {
                 print("위치 서비스 On 상태")
-                self.locationManager.startUpdatingLocation()
-                print(self.locationManager.location?.coordinate)
+                DispatchQueue.main.async {
+                    self.locationManager.startUpdatingLocation()
+                    self.startLocation = StartLocationModel(lat: Double(self.locationManager.location?.coordinate.latitude ?? 0.0), lng: Double(self.locationManager.location?.coordinate.longitude ?? 0.0))
+                    self.setupMapView()
+                }
             } else {
                 print("위치 서비스 Off 상태")
             }
         }
     }
     
+}
+
+// MARK: - SearchController
+
+extension HomeView : UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        if text != "" {
+            apiManager.loadSearchResult(goalAddress: text) { [weak self] result in
+                DispatchQueue.main.async {
+                    if let result = result {
+                        // API 응답 도착 시 주소 검색 결과 모델 업데이트
+                        self?.searchAddress = result
+                        print("Search Address Count: \(self?.searchAddress?.meta?.totalCount ?? 0)")
+                        if self?.searchAddress?.meta?.totalCount ?? 0 > 0 {
+                            self?.searchCountLable.isHidden = false
+                            self?.searchCountLable.text = "총 \(self?.searchAddress?.meta?.totalCount ?? 0)개 장소를 발견했어요!"
+                        } else {
+                            self?.searchCountLable.isHidden = true
+                        }
+                        self?.tableView.reloadData()
+                        self?.searchPlaceLable.text = "\"" + text + "\""
+                        self?.searchPlaceLable.font = .h3
+                        self?.searchPlaceLable.textColor = .black
+                    } else {
+                        print("결과가 없습니다.")
+                    }
+                }
+            }
+        } else {
+            searchPlaceLable.text = "목적지를 입력하세요!"
+            searchPlaceLable.font = .h2
+            searchPlaceLable.textColor = .g1
+            searchCountLable.isHidden = true
+            searchAddress = nil
+            tableView.reloadData()
+        }
+    }
+}
+
+// MARK: - UISearchControllerDelegate
+
+extension HomeView : UISearchControllerDelegate {
+    func willPresentSearchController(_ searchController: UISearchController) {
+        tableView.isHidden = false
+        searchPlaceLable.isHidden = false
+        searchResultLable.isHidden = false
+        searchCountLable.isHidden = false
+        mainMapView.isHidden = true
+    }
+    
+    func willDismissSearchController(_ searchController: UISearchController) {
+        tableView.isHidden = true
+        searchPlaceLable.isHidden = true
+        searchResultLable.isHidden = true
+        searchCountLable.isHidden = true
+        mainMapView.isHidden = false
+    }
+    
+}
+
+// MARK: - CLLocationManagerDelegate
+
+extension HomeView : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("현재 위치 업데이트 완료.")
         if let location = locations.first {
@@ -188,56 +295,11 @@ extension HomeView {
                 }
             }
             startLocation = StartLocationModel(lat: lat, lng: lng)
-            let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: lat ?? 0.0, lng: lng ?? 0.0), zoomTo: 15)
-            
-            self.mainMapView.mapView.moveCamera(cameraUpdate)
-        }
-    }
-    
-}
-
-// MARK: - SearchController 내의 텍스트가 변경될 때마다 호출되는 프로토콜
-extension HomeView : UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        print("DEBUG PRINT:", searchController.searchBar.text)
-        guard let text = searchController.searchBar.text else { return }
-        if text != "" {
-            apiManager.loadSearchResult(goalAddress: text) { [weak self] result in
-                DispatchQueue.main.async {
-                    if let result = result {
-                        // API 응답 도착 시 주소 검색 결과 모델 업데이트
-                        self?.searchAddress = result
-                        print("Search Address Count: \(self?.searchAddress?.meta?.totalCount ?? 0)")
-                        // 테이블 뷰 업데이트
-                        self?.tableView.reloadData()
-                    } else {
-                        print("결과가 없습니다.")
-                    }
-                }
-            }
         }
     }
 }
 
-// MARK: - SearchController 내에 응답자가 있는지 없는지 확인하는 프로토콜
-extension HomeView : UISearchControllerDelegate, UISearchBarDelegate {
-    func willPresentSearchController(_ searchController: UISearchController) {
-        tableView.isHidden = false
-        lastSearchLable.isHidden = false
-        mainMapView.isHidden = true
-    }
-    
-    func willDismissSearchController(_ searchController: UISearchController) {
-        tableView.isHidden = true
-        lastSearchLable.isHidden = true
-        mainMapView.isHidden = false
-    }
-    
-}
-
-extension HomeView : CLLocationManagerDelegate {
-    
-}
+// MARK: - ViewWillAppear
 
 extension HomeView {
     override func viewWillAppear(_ animated: Bool) {
