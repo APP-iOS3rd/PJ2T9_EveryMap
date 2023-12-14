@@ -98,15 +98,30 @@ class CompareView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        guard let start = startLocation, let end = searchAddress, let currentAddress = currentAddress else { return }
-        compareviewViewController = CompareViewViewController(compareView: self, startX: start.lng, startY: start.lat, endX: Double(end.x)!, endY: Double(end.y)!)
-        
         routeDataTableView.register(CompareViewTableViewCell.self, forCellReuseIdentifier: CompareViewTableViewCell.cellId)
         routeDataTableView.dataSource = self
         routeDataTableView.delegate = self
         
-        setUI(currentAddress: currentAddress, destinationAddress: end.roadAddress)
+        guard let start = startLocation/*, let end = searchAddress*/, let currentAddress = currentAddress else { return }
+        
+        if let end = searchAddress {
+            compareviewViewController = CompareViewViewController(compareView: self, startX: start.lng, startY: start.lat, endX: Double(end.x)!, endY: Double(end.y)!)
+            setUI(currentAddress: currentAddress, destinationAddress: end.roadAddress)
+            print(end.x)
+            print(end.y)
+        } else if let end = searchPlace {
+            var mapx = String(Int(Double(end.mapx)!)).map{ String($0) }
+            var mapy = String(Int(Double(end.mapy)!)).map{ String($0) }
+            mapx.insert(".", at: 3)
+            mapy.insert(".", at: 2)
+            guard let lat = Double(mapy.joined()),let lng = Double(mapx.joined()) else {return}
+            
+            compareviewViewController = CompareViewViewController(compareView: self, startX: start.lng, startY: start.lat, endX: lng, endY: lat)
+            setUI(currentAddress: currentAddress, destinationAddress: end.roadAddress)
+            print(lat)
+            print(lng)
+        }
+        
         showKakaoBtn.addTarget(self, action: #selector(showKakaoNavi), for: .touchUpInside)
     }
 }
@@ -175,8 +190,19 @@ extension CompareView {
 
 extension CompareView {
     @objc private func showKakaoNavi() {
-        guard let compareviewVC = self.compareviewViewController, let start = self.startLocation, let end = self.searchAddress else {return}
-        compareviewVC.showKakaoMap(startX: start.lat, startY: start.lng, endX: Double(end.x)!, endY: Double(end.y)!)
+        guard let compareviewVC = self.compareviewViewController, let start = self.startLocation else {return}
+        
+        if let end = self.searchAddress {
+            compareviewVC.showKakaoMap(startX: start.lat, startY: start.lng, endX: Double(end.x)!, endY: Double(end.y)!)
+        } else if let end = self.searchPlace {
+            var mapx = String(Int(Double(end.mapx)!)).map{ String($0) }
+            var mapy = String(Int(Double(end.mapy)!)).map{ String($0) }
+            mapx.insert(".", at: 3)
+            mapy.insert(".", at: 2)
+            guard let lat = Double(mapy.joined()),let lng = Double(mapx.joined()) else {return}
+            
+            compareviewVC.showKakaoMap(startX: start.lat, startY: start.lng, endX: lng, endY: lat)
+        }
     }
 }
 
