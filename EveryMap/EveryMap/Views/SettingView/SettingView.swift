@@ -16,7 +16,7 @@ class SettingView: UIViewController {
         label.topPadding = 65
         label.leftPadding = 25
         label.bottomPadding = 20
-        label.font = .boldSystemFont(ofSize: 32)
+        label.font = .h1
         label.textColor = .black
         label.textAlignment = .left
         label.backgroundColor = .white
@@ -26,7 +26,7 @@ class SettingView: UIViewController {
     // MARK: - TableView
     private let tableView = {
         let tableview = UITableView()
-        tableview.backgroundColor = .white
+        tableview.backgroundColor = .systemBackground
         return tableview
     }()
 
@@ -54,7 +54,7 @@ class SettingView: UIViewController {
 
     convenience init(title: String, bgColor: UIColor) {
         self.init()
-        self.view.backgroundColor = #colorLiteral(red: 0.949, green: 0.949, blue: 0.949, alpha: 1.0)
+        self.view.backgroundColor = .g2
     }
     
     override func viewDidLoad() {
@@ -99,7 +99,7 @@ extension SettingView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingViewTableViewCell.cellId, for: indexPath) as! SettingViewTableViewCell
         
-        cell.backgroundColor = .white
+        cell.backgroundColor = .systemBackground
         
         let settingItem = SettingItem(rawValue: indexPath.row)!
         
