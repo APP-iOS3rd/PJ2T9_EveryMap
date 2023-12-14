@@ -55,6 +55,7 @@ class HomeView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.isHidden = false
         setupHomeView()
     }
 }
@@ -141,7 +142,7 @@ extension HomeView : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // cell 선택했을 때 수행할 동작 여기서 구현하면 됨
         tableView.deselectRow(at: indexPath, animated: true)
-        let vc = SearchResultView()
+        let vc = ResultMapView()
         vc.address = searchAddress?.addresses?[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -220,4 +221,11 @@ extension HomeView : UISearchControllerDelegate, UISearchBarDelegate {
 
 extension HomeView : CLLocationManagerDelegate {
     
+}
+
+extension HomeView {
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+    }
 }
