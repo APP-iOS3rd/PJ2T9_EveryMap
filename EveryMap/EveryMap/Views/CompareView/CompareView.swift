@@ -15,52 +15,58 @@ class CompareView: UIViewController {
     var currentAddress : String?
     var startLocation : StartLocationModel?
     
-    let currentLabel: PaddingLabel = {
+    private let currentLabel: PaddingLabel = {
         let label = PaddingLabel()
         label.textAlignment = .left
         label.topPadding = 10
         label.leftPadding = 25
         label.bottomPadding = 10
-        label.font = .systemFont(ofSize: 15)
-        label.backgroundColor = #colorLiteral(red: 0.949, green: 0.949, blue: 0.949, alpha: 1.0)
+        label.font = .b3
+        label.backgroundColor = .g1
         label.layer.cornerRadius = 15
         label.layer.masksToBounds = true
         return label
     }()
     
-    let destinationLabel: PaddingLabel = {
+    private let destinationLabel: PaddingLabel = {
         let label = PaddingLabel()
         label.textAlignment = .left
         label.topPadding = 10
         label.leftPadding = 25
         label.bottomPadding = 10
-        label.font = .systemFont(ofSize: 15)
-        label.backgroundColor = #colorLiteral(red: 0.949, green: 0.949, blue: 0.949, alpha: 1.0)
+        label.font = .b3
+        label.backgroundColor = .g1
         label.layer.cornerRadius = 15
         label.layer.masksToBounds = true
         return label
     }()
 
 
-    let startTimeLabel = {
+    private let startTimeLabel = {
         let label = PaddingLabel()
         label.backgroundColor = .white
-        label.font = .systemFont(ofSize: 20)
+        label.font = .b2
         label.textColor = .lightGray
         return label
     }()
     
-    let routeOptionButton: UIButton = {
+    private let routeOptionButton: UIButton = {
         let btn = UIButton()
         btn.titleLabel?.adjustsFontForContentSizeCategory = true
         btn.setTitle("전체", for: .normal)
         btn.setImage(UIImage(systemName: "chevron.compact.down"), for: .normal)
         btn.tintColor = .lightGray
         btn.backgroundColor = .white
-        btn.titleLabel?.font = .systemFont(ofSize: 20)
+        btn.titleLabel?.font = .b2
         btn.setTitleColor(.lightGray, for: .normal)
         btn.semanticContentAttribute = .forceRightToLeft
         return btn
+    }()
+    
+    let routeDataTableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .white
+        return tableView
     }()
     
     let listChange: (UIButton, String) -> Void = {(btn: UIButton, title: String) in
@@ -87,6 +93,10 @@ class CompareView: UIViewController {
         guard let start = startLocation, let end = addressmodel, let currentAddress = currentAddress else { return }
         compareviewViewController = CompareViewViewController(compareView: self, startX: start.lng, startY: start.lat, endX: Double(end.x)!, endY: Double(end.y)!)
         
+        routeDataTableView.register(CompareViewTableViewCell.self, forCellReuseIdentifier: CompareViewTableViewCell.cellId)
+        routeDataTableView.dataSource = self
+        routeDataTableView.delegate = self
+        
         setUI(currentAddress: currentAddress, destinationAddress: end.roadAddress)
         
     }
@@ -95,7 +105,7 @@ class CompareView: UIViewController {
 extension CompareView {
     private func setUI(currentAddress: String, destinationAddress: String){
         self.view.backgroundColor = .white
-        self.view.addSubviews(currentLabel, destinationLabel, startTimeLabel, routeOptionButton)
+        self.view.addSubviews(currentLabel, destinationLabel, startTimeLabel, routeOptionButton, routeDataTableView)
         
         routeOptionButton.menu = UIMenu(title: "목록", children: [
             UIAction(title: "전체"){ _ in
@@ -117,7 +127,7 @@ extension CompareView {
         destinationLabel.text = destinationAddress
         
         guard let compareviewVC = compareviewViewController else {return}
-        startTimeLabel.text = "오늘 \(compareviewVC.getAMPMString()) \(compareviewVC.currentTime()) 출발"
+        startTimeLabel.text = "오늘 \(compareviewVC.getAMPMString() == "AM" ? "오전" : "오후") \(compareviewVC.currentTime()) 출발"
         
         NSLayoutConstraint.activate([
             //currentLabel
@@ -139,7 +149,56 @@ extension CompareView {
             
             //routeOptionButton
             routeOptionButton.topAnchor.constraint(equalTo: startTimeLabel.topAnchor),
-            routeOptionButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10)
+            routeOptionButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
+            
+            //routeDataTableView
+            routeDataTableView.topAnchor.constraint(equalTo: startTimeLabel.bottomAnchor, constant: 20),
+            routeDataTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            routeDataTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            routeDataTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
         ])
     }
+}
+
+extension CompareView: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return compareviewViewController?.getData().count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = routeDataTableView.dequeueReusableCell(withIdentifier: CompareViewTableViewCell.cellId, for: indexPath) as! CompareViewTableViewCell
+        
+        cell.backgroundColor = .systemBackground
+        
+        guard let data = compareviewViewController?.getIndexData(index: indexPath.row) else {return cell}
+        cell.totalTimeLabel.text = data.totalTime
+        cell.futureTimeLabel.text = "\(compareviewViewController?.getAMPMString() == "AM" ? "오전" : "오후")" + " " + (data.futureTime)
+    
+        var option = ""
+        switch data.searchOption {
+        case .Fast: option = "최소시간"
+        case .AvoidToll: option = "무료도로 우선"
+        case .Optimal: option = "추천"
+        }
+        cell.searchOptionLabel.text = option
+        
+        cell.distanceAndFareLabel.text = "\(data.totalDistance) ￨ \(data.totalFare)"
+        
+        switch data.mapName {
+        case .NaverMap:
+            cell.mapImage.image = UIImage(named: "NaverMapIcon")
+            cell.mapNameLabel.text = "Naver"
+        case .TMap:
+            cell.mapImage.image = UIImage(named: "TMapIcon")
+            cell.mapNameLabel.text = "T Map"
+        }
+        
+        return cell
+    }
+    
+    
+}
+
+extension CompareView: UITableViewDelegate {
+    
 }
