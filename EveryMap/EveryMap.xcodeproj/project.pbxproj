@@ -16,6 +16,7 @@
 		1D7F7B132B26E6C4008DEFE8 /* CompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F7B122B26E6C4008DEFE8 /* CompareView.swift */; };
 		1D7F7B152B26E6D5008DEFE8 /* CompareViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F7B142B26E6D5008DEFE8 /* CompareViewViewController.swift */; };
 		1D7F7B1C2B272A8C008DEFE8 /* SettingViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F7B1B2B272A8B008DEFE8 /* SettingViewTableViewCell.swift */; };
+		1D92A7CD2B2AA3E100FD11FF /* RouteDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D92A7CC2B2AA3E100FD11FF /* RouteDataModel.swift */; };
 		1DA3F13B2B2842F100C8A8BF /* APIKEY-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1DA3F13A2B2842F100C8A8BF /* APIKEY-Info.plist */; };
 		1DC374872B2756AB00D9214C /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC374862B2756AB00D9214C /* PaddingLabel.swift */; };
 		1DF24EAF2B27F8990020D30C /* TMapRouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF24EAD2B27F8990020D30C /* TMapRouteModel.swift */; };
@@ -70,6 +71,7 @@
 		1D7F7B122B26E6C4008DEFE8 /* CompareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareView.swift; sourceTree = "<group>"; };
 		1D7F7B142B26E6D5008DEFE8 /* CompareViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareViewViewController.swift; sourceTree = "<group>"; };
 		1D7F7B1B2B272A8B008DEFE8 /* SettingViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewTableViewCell.swift; sourceTree = "<group>"; };
+		1D92A7CC2B2AA3E100FD11FF /* RouteDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDataModel.swift; sourceTree = "<group>"; };
 		1DA3F1382B2842DD00C8A8BF /* TMapSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TMapSDK.framework; sourceTree = "<group>"; };
 		1DA3F13A2B2842F100C8A8BF /* APIKEY-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "APIKEY-Info.plist"; sourceTree = "<group>"; };
 		1DA3F13C2B28432600C8A8BF /* GuidanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceView.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				1DF24EAE2B27F8990020D30C /* NMapRouteModel.swift */,
 				1DF24EAD2B27F8990020D30C /* TMapRouteModel.swift */,
 				7152AC302B299F5900E3EE7E /* NMapAddressSearchModel.swift */,
+				1D92A7CC2B2AA3E100FD11FF /* RouteDataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				1D7F7B132B26E6C4008DEFE8 /* CompareView.swift in Sources */,
 				71EB13D92B206DFB00728077 /* AppDelegate.swift in Sources */,
 				1DF24EB02B27F8990020D30C /* NMapRouteModel.swift in Sources */,
+				1D92A7CD2B2AA3E100FD11FF /* RouteDataModel.swift in Sources */,
 				71B3DDE82B2172B900F58CE4 /* SettingView.swift in Sources */,
 				71B3DDEA2B217B9600F58CE4 /* Enums.swift in Sources */,
 				7152AC312B299F5900E3EE7E /* NMapAddressSearchModel.swift in Sources */,
