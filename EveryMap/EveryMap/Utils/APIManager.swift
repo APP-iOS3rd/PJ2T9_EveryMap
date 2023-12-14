@@ -107,7 +107,7 @@ final class APIManager {
         session.finishTasksAndInvalidate()
     }
     
-    // MARK: - 지역 검색 API
+    // MARK: - 주소 검색 API
     func loadSearchResult(goalAddress : String, completion: @escaping (NMapAddressSearchModel?) -> Void) {
         var addressdata : NMapAddressSearchModel?
         
@@ -139,6 +139,46 @@ final class APIManager {
                 let result = try JSONDecoder().decode(NMapAddressSearchModel.self, from: data)
                 addressdata = result
                 completion(addressdata)
+            } catch {
+                print("JSON 디코딩 에러 : \(error)")
+            }
+        }
+        task.resume()
+        session.finishTasksAndInvalidate()
+    }
+    // MARK: - 좌표값 기준 주소명 검색 API
+    func loadAddressResult(lat: Double, lng: Double, completion: @escaping (Region?) -> Void) {
+        var region : Region?
+        
+        let sessionConfig = URLSessionConfiguration.default
+        
+        /* Create session, and optionally set a URLSessionDelegate. */
+        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+        
+        guard var URL = URL(string: "https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2/gc") else { return }
+        let URLParams = [
+            "coords": "\(lng),\(lat)",
+            "output": "json",
+        ]
+        URL = URL.appendingQueryParameters(URLParams)
+        var request = URLRequest(url: URL)
+        request.httpMethod = "GET"
+        
+        // Headers
+        guard let nmapClientId = Bundle.main.NavermapClientId, let nmapClientSecret = Bundle.main.NavermapClientSecret else { return }
+        request.addValue(nmapClientId, forHTTPHeaderField: "X-NCP-APIGW-API-KEY-ID")
+        request.addValue(nmapClientSecret, forHTTPHeaderField: "X-NCP-APIGW-API-KEY")
+        
+        /* Start a new Task */
+        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+            guard let data = data, error == nil else {
+                print("에러발생.")
+                return
+            }
+            do {
+                let result = try JSONDecoder().decode(ReverseGeoModel.self, from: data)
+                region = result.results?.first?.region
+                completion(region)
             } catch {
                 print("JSON 디코딩 에러 : \(error)")
             }
