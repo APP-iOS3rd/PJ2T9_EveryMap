@@ -35,13 +35,14 @@ class SettingViewTableViewCell: UITableViewCell {
     
     func setLayout() {
         itemLabel.textColor = .black
-        itemLabel.font = .systemFont(ofSize: 26)
+        itemLabel.font = .b1
         itemLabel.topPadding = 15
         itemLabel.bottomPadding = 15
         itemLabel.leftPadding = 25
         
-        itemSubLabel.textColor = .gray
-        itemSubLabel.font = .systemFont(ofSize: 20)
+        itemSubLabel.textColor = .black
+        itemSubLabel.layer.opacity = 0.35
+        itemSubLabel.font = .b2
         itemSubLabel.topPadding = 15
         itemSubLabel.bottomPadding = 15
         itemSubLabel.rightPadding = 25
