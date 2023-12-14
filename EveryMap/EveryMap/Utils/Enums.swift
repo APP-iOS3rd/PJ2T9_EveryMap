@@ -40,3 +40,23 @@ enum TabBarItem: String {
         }
     }
 }
+
+// MARK: - RouteDataModel 관련 enum
+enum MapName {
+    case NaverMap
+    case TMap
+}
+
+enum SearchOption: Int, CaseIterable {
+    case Fast
+    case Optimal
+    case AvoidToll
+    
+    var option: SearchOption {
+        switch self {
+        case .Fast: return .Fast // 빠른길
+        case .Optimal: return .Optimal // 추천
+        case .AvoidToll: return .AvoidToll // 무료
+        }
+    }
+}
