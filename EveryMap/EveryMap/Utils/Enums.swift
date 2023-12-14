@@ -48,15 +48,15 @@ enum MapName {
 }
 
 enum SearchOption: Int, CaseIterable {
-    case Fast
     case Optimal
     case AvoidToll
+    case Fast
     
     var option: SearchOption {
         switch self {
-        case .Fast: return .Fast // 빠른길
         case .Optimal: return .Optimal // 추천
         case .AvoidToll: return .AvoidToll // 무료
+        case .Fast: return .Fast // 빠른길
         }
     }
 }

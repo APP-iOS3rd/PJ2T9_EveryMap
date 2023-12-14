@@ -13,7 +13,7 @@ class CompareView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        compareviewViewController = CompareViewViewController(compareView: self)
+//        compareviewViewController = CompareViewViewController(compareView: self)
     }
     
 

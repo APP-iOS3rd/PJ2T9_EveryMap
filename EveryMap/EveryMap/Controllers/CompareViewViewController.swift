@@ -11,8 +11,6 @@ import CoreLocation
 class CompareViewViewController {
     private let compareView: CompareView
     
-//    private var tmapRouteData = [Properties]()
-//    private var nmapRouteData = [Route]()
     private var routeData = [RouteDataModel]()
     
     private let tmapSearchOption = ["0", "1", "2"] //0: 추천, 1: 무료, 2: 최소시간
