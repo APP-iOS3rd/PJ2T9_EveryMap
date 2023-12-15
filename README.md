@@ -58,7 +58,7 @@ EveryMap의 시작은
 - Directions 5
 - Geocoding
 - Reverse Geocoding
-- Naver 지역검색 API
-- Naver 장소검색 API
+- Naver 지역검색
+- Naver 장소검색
 ```
 * TmapAPI
