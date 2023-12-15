@@ -1,5 +1,5 @@
 # PJ2T9_EveryMap
-![EveryMap 표지 iOS](https://github.com/APP-iOS3rd/PJ2T9_EveryMap/assets/43903354/0cc6ae6c-08aa-4c82-a476-8d0a11c8de17)
+![EveryMap 표지 iOS](https://github.com/APP-iOS3rd/PJ2T9_EveryMap/assets/43903354/a7f5f93e-83ac-4ac9-a2d8-210744f6fa75)
 
 <br>
 
