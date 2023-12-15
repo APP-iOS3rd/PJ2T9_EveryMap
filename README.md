@@ -1,43 +1,50 @@
 # PJ2T9_EveryMap
 ![EveryMap 표지 iOS](https://github.com/APP-iOS3rd/PJ2T9_EveryMap/assets/43903354/0cc6ae6c-08aa-4c82-a476-8d0a11c8de17)
 
+<br>
 
-EveryMap, 목적지까지 더 즐겁고 편리한 여정을 안내합니다. 함께 떠나볼까요?
+# EveryMap-iOS Developer
+<table align="center" style = "table-layout: auto; width: 100%; table-layout: fixed;">
+  <colgroup>
+    <col style="width:33%"/>
+    <col style="width:34%"/>
+  </colgroup>
+  <tr>
+    <td>
+      <img src= "https://github.com/APP-iOS3rd/PJ2T9_EveryMap/assets/43903354/15229a6c-1d71-4e0c-8d59-97a5d6f93062"/> 
+    </td>
+    <td>
+      <img src="https://github.com/APP-iOS3rd/PJ2T9_EveryMap/assets/43903354/25f216a9-5850-4fe7-a972-c47a054769a1"/> 
+    </td>
+  </tr>
+  <tr>
+    <th align="center">이성현</th>
+    <th align="center">하태준</th>
+  </tr>
+  <tr>
+    <td align="center">
+     Github: <a href="https://github.com/zxl3651">S_HYEON</a>
+    </td>
+    <td align="center">
+     Github: <a href="https://github.com/htj7425">htj7425</a>
+    </td>
+  </tr>
+</table>
 
 <br>
 
-## 🧑‍💻 멤버구성 👨‍💻
-|Team 9|이성현|하태준|
-| :---: | :---: | :---: |
-|GitHub| [S_HYEON](https://github.com/zxl3651)|  [htj7425](https://github.com/htj7425)  |
+# 서비스 소개
 
-<br>
+### EveryMap, 목적지까지 더 즐겁고 편리한 여정을 안내합니다. 함께 떠나볼까요?
+```
+EveryMap은 다중 네비게이션 경로 비교 및 경로 최적화 서비스입니다.
 
-## 🚘 소개
-### 1. 서비스 소개
+EveryMap의 시작은
+"네비게이션 앱들은 많고 같은 곳을 가더라도 각 앱마다 걸리는 시간과 경로가 다른데 뭐가 더 좋은거지?" 라는
+질문에서 시작되었습니다.
+```
 
-* EveryMap은 다양한 네비게이션 앱의 경로를 한 번에 비교할 수 있는 유용한 도구입니다.<br>사용자는 여러 네비게이션 앱의 경로, 예상 도착 시간, 교통 상황을 한눈에 비교하여 가장 효율적인 경로를 선택할 수 있습니다.<br>EveryMap은 사용자에게 최적의 경로를 제공하여 시간과 비용을 절약할 수 있게 도와줍니다.
-
-<br>
-
-### 2. 프로젝트 특징
-
-* TMap, 카카오네비, 네이버지도 등 다양한 네비게이션 서비스를 통합해 여러 옵션을 제공합니다.
-
-* 사용자는 각 서비스마다 검색결과를 비교하지 않아도, 가장 최적의 답을 파악해 서비스를 이용할 수 있으며 궁극적으로 사용자의 시간 절약, 효율적인 네비게이션 서비스 사용을 유도할 수 있습니다.
-
-<br>
-
-### 3. 사용자 기대효과
-
-* __시간절약__<br>
-   최적의 경로와 최적의 시간을 통해 이동 시간을 최소화하여 일상 생활에서의 시간을 더 효율적으로 활용할 수 있습니다.
-   
-* __편의성 향상__<br>
-   각 지도 서비스의 특성 및 결과를 고려해 사용자에게 편리하고 직관적인 서비스를 제공하여 편의성을 향상시킵니다.
-   
-* __정보 신뢰성__<br>
-   다양한 데이터 소스를 활용하여 신뢰성 있는 정보를 제공하여 사용자가 안심하고 경로를 선택할 수 있도록 도움을 줍니다.
-
-
-
+# Preview
+<img src = "https://github.com/APP-iOS3rd/PJ2T9_EveryMap/assets/43903354/b5c9a75f-bec3-4ff1-8f44-c1a2ae08322b" />
+<img src = "https://github.com/APP-iOS3rd/PJ2T9_EveryMap/assets/43903354/f3606eed-5008-4c9b-9327-a0b52cbda446" />
+<img src = "https://github.com/APP-iOS3rd/PJ2T9_EveryMap/assets/43903354/60aeb45d-7f5b-4420-8261-32650608a549" />
