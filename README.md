@@ -49,6 +49,24 @@ EveryMap의 시작은
 <img src = "https://github.com/APP-iOS3rd/PJ2T9_EveryMap/assets/43903354/446e3712-3842-40f9-87e5-04a5d6e76165" />
 <img src = "https://github.com/APP-iOS3rd/PJ2T9_EveryMap/assets/43903354/4fc48019-ed1b-4c3b-94b1-3c8b34f6156b" />
 
+# Packaging
+
+```
+🚙EveryMap
+ ┣ 📂Resource
+ ┃ ┣ 📂Fonts
+ ┣ 📂Literal
+ ┣ 📂Core
+ ┣ 📂Utils
+ ┣ 📂Models
+ ┣ 📂Views
+ ┃ ┣ 📂CustomView
+ ┃ ┣ 📂SettingView
+ ┃ ┣ 📂HomeView
+ ┃ ┣ 📂ResultMapView
+ ┃ ┣ 📂CompareView
+ ┗📂Controllers
+ ```
 
 # Tech Stack
 
