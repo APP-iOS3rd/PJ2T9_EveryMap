@@ -45,6 +45,6 @@ EveryMap의 시작은
 ```
 
 # Preview
-<img src = "https://github.com/APP-iOS3rd/PJ2T9_EveryMap/assets/43903354/b5c9a75f-bec3-4ff1-8f44-c1a2ae08322b" />
-<img src = "https://github.com/APP-iOS3rd/PJ2T9_EveryMap/assets/43903354/f3606eed-5008-4c9b-9327-a0b52cbda446" />
-<img src = "https://github.com/APP-iOS3rd/PJ2T9_EveryMap/assets/43903354/60aeb45d-7f5b-4420-8261-32650608a549" />
+<img src = "https://github.com/APP-iOS3rd/PJ2T9_EveryMap/assets/43903354/aa218a8f-91e0-444c-a5d4-52aa4a8e9d4d" />
+<img src = "https://github.com/APP-iOS3rd/PJ2T9_EveryMap/assets/43903354/446e3712-3842-40f9-87e5-04a5d6e76165" />
+<img src = "https://github.com/APP-iOS3rd/PJ2T9_EveryMap/assets/43903354/4fc48019-ed1b-4c3b-94b1-3c8b34f6156b" />
