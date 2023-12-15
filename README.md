@@ -48,3 +48,17 @@ EveryMap의 시작은
 <img src = "https://github.com/APP-iOS3rd/PJ2T9_EveryMap/assets/43903354/aa218a8f-91e0-444c-a5d4-52aa4a8e9d4d" />
 <img src = "https://github.com/APP-iOS3rd/PJ2T9_EveryMap/assets/43903354/446e3712-3842-40f9-87e5-04a5d6e76165" />
 <img src = "https://github.com/APP-iOS3rd/PJ2T9_EveryMap/assets/43903354/4fc48019-ed1b-4c3b-94b1-3c8b34f6156b" />
+
+
+# Tech Stack
+
+* NaverAPI
+```
+- Mobile Dynamic Map
+- Directions 5
+- Geocoding
+- Reverse Geocoding
+- Naver 지역검색 API
+- Naver 장소검색 API
+```
+* TmapAPI
