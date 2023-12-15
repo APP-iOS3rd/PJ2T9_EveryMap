@@ -1,4 +1,7 @@
 # PJ2T9_EveryMap
+![EveryMap 표지 iOS](https://github.com/APP-iOS3rd/PJ2T9_EveryMap/assets/43903354/0cc6ae6c-08aa-4c82-a476-8d0a11c8de17)
+
+
 EveryMap, 목적지까지 더 즐겁고 편리한 여정을 안내합니다. 함께 떠나볼까요?
 
 <br>
