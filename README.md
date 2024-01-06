@@ -6,7 +6,7 @@
 # EveryMap-iOS Developer
 <table align="center" style = "table-layout: auto; width: 100%; table-layout: fixed;">
   <colgroup>
-    <col style="width:33%"/>
+    <col style="width:34%"/>
     <col style="width:34%"/>
   </colgroup>
   <tr>
