@@ -13,6 +13,7 @@ class MainTabBarView: UITabBarController {
         super.viewDidLoad()
         setUI()
         setTabBarControllers()
+        setupTabBarShadowAndLine()
     }
 }
 
@@ -29,7 +30,7 @@ extension MainTabBarView {
         
         // bgColor -> "#colorLiteral(" 이라고 치면 사용할 수 있음
         let firstNC = UINavigationController(rootViewController: HomeView(title: TabBarItem.home.toName()))
-        let secondNC = UINavigationController(rootViewController: SettingView(title: TabBarItem.setting.toName(), bgColor: #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)))
+        let secondNC =  UINavigationController(rootViewController: SettingView(title: TabBarItem.setting.toName(), bgColor: #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)))
         
         self.viewControllers = [firstNC, secondNC]
         
@@ -39,5 +40,14 @@ extension MainTabBarView {
         
         firstNC.tabBarItem = firstTabBarItem
         secondNC.tabBarItem = secondTabBarItem
+    }
+    
+    private func setupTabBarShadowAndLine() {
+        // 그림자 효과 추가 (위쪽으로 연하게)
+        self.tabBar.layer.shadowColor = UIColor.black.cgColor
+        self.tabBar.layer.shadowOpacity = 0.08
+        self.tabBar.layer.shadowOffset = CGSize(width: 0, height: -4)
+        self.tabBar.layer.shadowRadius = 12
+        self.tabBar.layer.masksToBounds = false
     }
 }
