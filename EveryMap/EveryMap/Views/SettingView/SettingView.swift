@@ -9,17 +9,30 @@ import UIKit
 
 class SettingView: UIViewController {
     
-    // MARK: - Label
-    private let greetingLable = {
-        var label = PaddingLabel()
-        label.text = "안녕하세요, 회원님"
-        label.topPadding = 65
-        label.leftPadding = 25
-        label.bottomPadding = 20
-        label.font = .h1
+    // MARK: - Custom NavigationBar
+    private let navBar: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 0.89, green: 0.94, blue: 1.0, alpha: 1.0) // 연한 파랑색 #E3F0FF
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+//    private let backButton: UIButton = {
+//        let button = UIButton(type: .system)
+//        let image = UIImage(systemName: "chevron.left")
+//        button.setImage(image, for: .normal)
+//        button.tintColor = .black
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        return button
+//    }()
+    
+    private let navTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "설정"
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         label.textColor = .black
-        label.textAlignment = .left
-        label.backgroundColor = .white
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -27,8 +40,10 @@ class SettingView: UIViewController {
     private let tableView = {
         let tableview = UITableView()
         tableview.backgroundColor = .systemBackground
+        tableview.translatesAutoresizingMaskIntoConstraints = false
         return tableview
     }()
+    
 
     enum SettingItem: Int, CaseIterable {
         case appVersion
@@ -54,12 +69,16 @@ class SettingView: UIViewController {
 
     convenience init(title: String, bgColor: UIColor) {
         self.init()
-        self.view.backgroundColor = .g2
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(red: 1.0, green: 0.94, blue: 0.94, alpha: 1.0) // 연한 빨강색 #FFF0F0
         setupView()
+    }
+
+    @objc private func backButtonTapped() {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -67,21 +86,24 @@ class SettingView: UIViewController {
 // MARK: - Function
 extension SettingView {
     private func setupView() {
-        self.view.addSubviews(greetingLable ,tableView)
+        self.view.addSubviews(navBar, tableView)
+        navBar.addSubviews(navTitleLabel)
         self.tableView.register(SettingViewTableViewCell.self, forCellReuseIdentifier: SettingViewTableViewCell.cellId)
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        
-        // Set greetingLabel padding
-        
+//        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         NSLayoutConstraint.activate([
-            // greetingLabel
-            greetingLable.topAnchor.constraint(equalTo: self.view.topAnchor),
-            greetingLable.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            greetingLable.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            
-            // tableView
-            tableView.topAnchor.constraint(equalTo: self.greetingLable.bottomAnchor, constant: 10),
+            navBar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            navBar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            navBar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            navBar.heightAnchor.constraint(equalToConstant: 44),
+//            backButton.leadingAnchor.constraint(equalTo: navBar.leadingAnchor, constant: 8),
+//            backButton.centerYAnchor.constraint(equalTo: navBar.centerYAnchor),
+//            backButton.widthAnchor.constraint(equalToConstant: 32),
+//            backButton.heightAnchor.constraint(equalToConstant: 32),
+            navTitleLabel.centerXAnchor.constraint(equalTo: navBar.centerXAnchor),
+            navTitleLabel.centerYAnchor.constraint(equalTo: navBar.centerYAnchor),
+            tableView.topAnchor.constraint(equalTo: navBar.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)

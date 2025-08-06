@@ -14,8 +14,6 @@
 		1D92A7CD2B2AA3E100FD11FF /* RouteDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D92A7CC2B2AA3E100FD11FF /* RouteDataModel.swift */; };
 		1DC374872B2756AB00D9214C /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC374862B2756AB00D9214C /* PaddingLabel.swift */; };
 		1DD5B1A22B2B3E910012DA52 /* APIKEY-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1DD5B1A12B2B3E910012DA52 /* APIKEY-Info.plist */; };
-		1DD5B1A52B2B3E9E0012DA52 /* TMapSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD5B1A32B2B3E9C0012DA52 /* TMapSDK.framework */; };
-		1DD5B1A62B2B3E9E0012DA52 /* TMapSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD5B1A32B2B3E9C0012DA52 /* TMapSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1DD5B1AA2B2B3F5B0012DA52 /* CompareViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD5B1A92B2B3F5B0012DA52 /* CompareViewTableViewCell.swift */; };
 		1DF24EAF2B27F8990020D30C /* TMapRouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF24EAD2B27F8990020D30C /* TMapRouteModel.swift */; };
 		1DF24EB02B27F8990020D30C /* NMapRouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF24EAE2B27F8990020D30C /* NMapRouteModel.swift */; };
@@ -56,7 +54,6 @@
 			files = (
 				71C2AE7D2B26F743005BA51B /* Pods_EveryMap.framework in Embed Frameworks */,
 				71C2AE7F2B26F744005BA51B /* (null) in Embed Frameworks */,
-				1DD5B1A62B2B3E9E0012DA52 /* TMapSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,7 +109,6 @@
 			files = (
 				71C2AE7C2B26F743005BA51B /* Pods_EveryMap.framework in Frameworks */,
 				71C2AE7E2B26F744005BA51B /* (null) in Frameworks */,
-				1DD5B1A52B2B3E9E0012DA52 /* TMapSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
